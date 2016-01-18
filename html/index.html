@@ -4,45 +4,52 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title></title>
+
+    <title>vimrcBuilder - Customize vim quickly</title>
+
+    <!-- Angular -->
+    <script src="../js/angular.min.js"></script>
 
     <!-- jquery -->
     <script src="../js/jquery.min.js"></script>
 
-    <!-- Latest compiled and minified CSS -->
+    <!-- Latest compiled and minified bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
 
-    <!-- Optional theme -->
+    <!-- Optional Bootstrap theme -->
     <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+
+    <!-- Custom css -->
+    <link rel="stylesheet" href="../css/custom.css">
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
-  <style type="text/css" media="screen">
-    #editor {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-    }
-</style>
 </head>
-  <body>
-    body
 
-    <div id="editor">"""""""""" Line Numbering """"""""""
-    set relativenumber
-    set number
-
-"""""""""" Created with http://github.com/dawsonbotsford/vimrcBuilder """"""""""
+<body>
+  <div class="row">
+    <div class="col-md-6">
+      <div ng-app="">
+        <p>Name : <input type="text" ng-model="name"></p>
+        <h1>Hello {{name}}</h1>
+      </div>
     </div>
+    <div class="col-md-6">
+      <div id="editor">"""""""""" Line Numbering """"""""""
+        set relativenumber
+        set number
 
-    <script src="../ace/ace.js" type="text/javascript" charset="utf-8"></script>
-    <script>
-      var editor = ace.edit("editor");
-      editor.setTheme("ace/theme/monokai");
-      // editor.getSession().setMode("ace/mode/javascript");
-    </script>
-  </body>
+        """""""""" Created with http://github.com/dawsonbotsford/vimrcBuilder """"""""""
+      </div>
+
+      <script src="../ace/ace.js" type="text/javascript" charset="utf-8"></script>
+      <script>
+var editor = ace.edit("editor");
+editor.setTheme("ace/theme/monokai");
+// editor.getSession().setMode("ace/mode/javascript");
+      </script>
+    </div>
+  </div>
+</body>
 
 </html>
