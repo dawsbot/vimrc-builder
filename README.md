@@ -8,4 +8,6 @@ vimrc creation made easy
 ## Installation
 ```shell
 bower install
+npm install
+node index.js
 ```
