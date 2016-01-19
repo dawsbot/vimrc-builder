@@ -1,0 +1,26 @@
+{
+  "name": "vimrcbuilder",
+  "version": "0.0.0",
+  "description": "vimrc creation made easy",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.13.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dawsonbotsford/vimrcBuilder.git"
+  },
+  "keywords": [
+    "vimrc"
+  ],
+  "author": "Dawson Botsford <dawsonbotsford@gmail.com> (http://dawsonbotsford.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dawsonbotsford/vimrcBuilder/issues"
+  },
+  "homepage": "https://github.com/dawsonbotsford/vimrcBuilder#readme"
+}

@@ -25,8 +25,7 @@
     <!-- Custom css -->
     <link rel="stylesheet" href="css/custom.css">
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
@@ -36,8 +35,15 @@
         <p>Name : <input type="text" ng-model="name"></p>
         <h1>Hello {{name}}</h1>
 
-        <!-- for 32px icons -->
-        <span class="mega-octicon octicon-clippy"></span>
+        <button id="test" data-toggle="tooltip" title="Copy to clipboard" aria-label="Copy to clipboard" class="js-zeroclipboard btn btn-sm zeroclipboard-button tooltipped tooltipped-s" data-copied-hint="Copied!" type="button">
+          <span aria-hidden="true" class="octicon octicon-clippy">
+          </span>
+<button id="copy-button" data-clipboard-text="Copy Me!" title="Click to copy me.">Copy to Clipboard</button>
+        </button>
+
+
+      <script src="bower_components/zeroclipboard/dist/ZeroClipboard.js"></script>
+
 
       </div>
     </div>
@@ -61,4 +67,16 @@ editor.resize();
   </div>
 </body>
 
+<!-- Enable tooltips right quick -->
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
 </html>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script src="js/main.js"></script>
