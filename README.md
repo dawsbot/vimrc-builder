@@ -1,5 +1,5 @@
 <p align="center">
-  <a><img src="img/MVP.png" title="MVP demo"/></a>
+  <a><img src="img/mvp.png" title="MVP demo"/></a>
 </p>
 
 <p align="center">
