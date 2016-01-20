@@ -31,7 +31,6 @@ Example: `syntax on` in your vimrc enables syntax hilighting
 <br>
 ## Installation
 ```shell
-bower install
 npm install
-node index.js
+npm start
 ```
