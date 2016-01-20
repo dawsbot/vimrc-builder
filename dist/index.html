@@ -12,6 +12,9 @@
 
     <!-- jquery -->
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/react/dist/react.js"></script>
+    <script src="../node_modules/react-dom/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
 
     <!-- Latest compiled and minified bootstrap CSS -->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -30,7 +33,9 @@
   <body>
     <div class="row">
       <div class="col-md-6">
-        choose vimrc options here
+        Choose vimrc options here
+        <div id="example"></div>
+        <script type="text/babel" src="js/react/example.js"></script>
       </div>
 
       <div id="ace_wrapper" class="col-md-6">
@@ -39,7 +44,7 @@
 set relativenumber
 set number
 
-"""""""""" Created with http://github.com/dawsonbotsford/vimrcBuilder """"""""""
+"""""""""" Created at https://github.com/dawsonbotsford/vimrcBuilder """"""""""
   </div>
 
       </div>
@@ -50,9 +55,10 @@ set number
 
 
 <script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
-        <script>
+<script>
   var editor = ace.edit("editor");
   editor.setTheme("ace/theme/monokai");
   editor.resize();
-        </script>
+</script>
+
 <script src="js/main.js"></script>
