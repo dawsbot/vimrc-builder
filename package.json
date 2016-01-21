@@ -4,9 +4,11 @@
   "description": "vimrc creation made easy",
   "main": "index.js",
   "dependencies": {
+    "babel-preset-react": "^6.3.13",
     "bootstrap": "^3.3.6",
     "express": "^4.13.3",
     "grunt": "^0.4.5",
+    "grunt-babel": "^6.0.0",
     "grunt-contrib-cssmin": "^0.14.0",
     "grunt-contrib-eslint": "0.0.5",
     "grunt-contrib-uglify": "^0.11.0",
@@ -21,7 +23,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

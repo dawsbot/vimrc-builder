@@ -38,7 +38,7 @@ module.exports = function(grunt) {
         options: {
           banner: '/*! Uglified on <%= grunt.template.today("yyyy-mm-dd") %> */\n',
           sourceMap: true,
-          sourceMapName: 'dist/js/sourcemap.map'
+          sourceMapName: 'dist/js/main.js.map'
         },
         files: {
           'dist/js/main.js': ['src/js/main.js']
@@ -50,9 +50,21 @@ module.exports = function(grunt) {
         files: ['src/**/*'],
         tasks: ['default'],
       }
+    },
+    babel: {
+      options: {
+        sourceMap: true,
+        presets: ['react']
+      },
+      dist: {
+        files: {
+        'dist/js/react/example.js': 'src/js/react/example.js'
+        }
+      }
     }
   });
 
+  grunt.loadNpmTasks('grunt-babel');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -63,5 +75,4 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['lint', 'buildDist']);
   grunt.registerTask('lint', ['eslint', 'jsonlint']);
   grunt.registerTask('buildDist', ['sync', 'cssmin', 'uglify']);
-  grunt.registerTask('w', ['watch']);
 };
