@@ -31,7 +31,5 @@ Example: `syntax on` in your vimrc enables syntax hilighting
 <br>
 ## Installation
 ```shell
-npm install
-grunt
-npm start
+npm run newb
 ```
