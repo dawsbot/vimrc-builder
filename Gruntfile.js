@@ -74,5 +74,5 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['lint', 'buildDist']);
   grunt.registerTask('lint', ['eslint', 'jsonlint']);
-  grunt.registerTask('buildDist', ['sync', 'cssmin', 'uglify']);
+  grunt.registerTask('buildDist', ['sync', 'cssmin', 'uglify', 'babel']);
 };
