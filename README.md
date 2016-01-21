@@ -32,5 +32,6 @@ Example: `syntax on` in your vimrc enables syntax hilighting
 ## Installation
 ```shell
 npm install
+grunt
 npm start
 ```
