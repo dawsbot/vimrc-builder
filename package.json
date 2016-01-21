@@ -29,7 +29,8 @@
   },
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "newb": "npm install && grunt && open http://localhost:3000 && npm start"
   },
   "repository": {
     "type": "git",
