@@ -1,22 +1,23 @@
-var jsFiles = ['*.js', 'src/js/*.js', 'src/*.js'];
-var jsonFiles = ['*.json', 'src/*.json'];
+var jsFiles = 'src/**/*.js';
+var notAce = '!src/ace/**/*';
+var jsonFiles = ['*.json', 'src/**/*.json', notAce];
 
 module.exports = function(grunt) {
 
   grunt.initConfig({
     eslint: {
-      lint_jsFiles: jsFiles
+      lint_jsFiles: [jsFiles, notAce]
     },
     jsonlint: {
       lint_jsonFiles: jsonFiles
     },
-    sync: {
+    copy: {
       copy_untouched_resources_to_dist: {
         files: [
           {
             expand: true,
             cwd: 'src',
-            src: ['**/*', '!css/*', '!js/*'],
+            src: ['*', '**/*', '!css/*', '!js/*'],
             dest: 'dist'
           }
         ]
@@ -45,12 +46,6 @@ module.exports = function(grunt) {
         }
       }
     },
-    watch: {
-      scripts: {
-        files: ['src/**/*'],
-        tasks: ['default'],
-      }
-    },
     babel: {
       options: {
         sourceMap: true,
@@ -61,18 +56,25 @@ module.exports = function(grunt) {
         'dist/js/react/example.js': 'src/js/react/example.js'
         }
       }
+    },
+    watch: {
+      all: {
+        files: 'src/**/*',
+        tasks: ['build']
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-babel');
-  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-jsonlint');
-  grunt.loadNpmTasks('grunt-sync');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-newer');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['lint', 'buildDist']);
-  grunt.registerTask('lint', ['eslint', 'jsonlint']);
-  grunt.registerTask('buildDist', ['sync', 'cssmin', 'uglify', 'babel']);
+  grunt.registerTask('lint', ['newer:eslint', 'newer:jsonlint']);
+  grunt.registerTask('build', ['newer:copy', 'newer:cssmin', 'newer:uglify', 'newer:babel']);
+  grunt.registerTask('default', ['lint', 'build']);
 };
