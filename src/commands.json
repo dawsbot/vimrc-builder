@@ -1,4 +1,5 @@
 [
+
   {
     "command": "set number",
     "description": "Show absolute line numbers on the left. (The line numbering you're likely used to"
