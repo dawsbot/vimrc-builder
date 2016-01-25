@@ -49,7 +49,7 @@ module.exports = function(grunt) {
     watch: {
       all: {
         files: 'src/**/*',
-        tasks: ['build']
+        tasks: ['default']
       }
     },
     browserify: {
@@ -74,6 +74,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('lint', ['newer:eslint', 'newer:jsonlint']);
+  grunt.registerTask('test', ['lint']);
   grunt.registerTask('build', ['newer:copy', 'newer:cssmin', 'newer:uglify', 'browserify']);
-  grunt.registerTask('default', ['lint', 'build']);
+  grunt.registerTask('default', ['test', 'build']);
 };
