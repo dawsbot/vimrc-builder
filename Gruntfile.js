@@ -46,28 +46,27 @@ module.exports = function(grunt) {
         }
       }
     },
-    babel: {
-      options: {
-        sourceMap: true,
-        presets: ['react']
-      },
-      dist: {
-        files: {
-        'dist/js/react/example.js': 'src/js/react/example.js'
-        }
-      }
-    },
     watch: {
       all: {
         files: 'src/**/*',
         tasks: ['build']
       }
+    },
+    browserify: {
+      dist: {
+        options: {
+          transform: ['reactify']
+        },
+        files: {
+          'dist/js/react/example.js': ['src/js/react/example.js']
+        }
+      }
     }
   });
 
-  grunt.loadNpmTasks('grunt-babel');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-jsonlint');
   grunt.loadNpmTasks('grunt-contrib-copy');
@@ -75,6 +74,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('lint', ['newer:eslint', 'newer:jsonlint']);
-  grunt.registerTask('build', ['newer:copy', 'newer:cssmin', 'newer:uglify', 'newer:babel']);
+  grunt.registerTask('build', ['newer:copy', 'newer:cssmin', 'newer:uglify', 'browserify']);
   grunt.registerTask('default', ['lint', 'build']);
 };

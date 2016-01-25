@@ -2,10 +2,18 @@
 
   {
     "command": "set number",
+    "value": "setNumber",
     "description": "Show absolute line numbers on the left. (The line numbering you're likely used to"
   },
   {
     "command": "set relativenumber",
+    "value": "setRelativenumber",
     "description": "Show relative line numbers on the left. These change based upon where your cursor is."
+  },
+  {
+    "command": "testComman",
+    "value": "testVal",
+    "description": "testDesc"
   }
 ]
+

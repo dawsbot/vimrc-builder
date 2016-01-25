@@ -9,23 +9,24 @@
     "express": "^4.13.3",
     "grunt": "^0.4.5",
     "grunt-babel": "^6.0.0",
+    "grunt-browserify": "^4.0.1",
     "grunt-contrib-copy": "^0.8.2",
     "grunt-contrib-cssmin": "^0.14.0",
     "grunt-contrib-eslint": "0.0.5",
     "grunt-contrib-uglify": "^0.11.0",
-    "grunt-eslint": "^17.3.1",
-    "grunt-jsonlint": "^1.0.7",
+    "grunt-contrib-watch": "^0.6.1",
     "grunt-newer": "^1.1.1",
     "jquery": "^2.2.0",
     "octicons": "^3.3.0",
     "react": "^0.14.6",
-    "react-dom": "^0.14.6"
+    "react-dom": "^0.14.6",
+    "reactify": "^1.1.1"
   },
   "devDependencies": {
+    "grunt-eslint": "^17.3.1",
+    "grunt-jsonlint": "^1.0.7",
     "eslint": "^1.10.3",
     "jsonlint": "^1.6.2",
-    "mocha": "^2.3.4",
-    "should": "^8.1.1"
   },
   "scripts": {
     "start": "node index.js",
