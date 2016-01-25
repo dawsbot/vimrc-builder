@@ -12,7 +12,10 @@
   <a href="LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT Licensed" />
   </a>
-
+  
+  <a href="https://travis-ci.org/dawsonbotsford/vimrcBuilder">
+    <img src="https://travis-ci.org/dawsonbotsford/vimrcBuilder.svg?branch=master)"
+  </a>
 
 <br>
 <b>Warning, repo under heavy construction</b>
