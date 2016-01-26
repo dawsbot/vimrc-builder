@@ -7,7 +7,7 @@ var CheckBox = React.createClass({
   //Get command from value in commands object
   getCommand: function(val) {
     for (let command of commands) {
-      if (command.value == val) {
+      if (command.id == val) {
         return command.command;
       }
     }
@@ -25,7 +25,7 @@ var CheckBox = React.createClass({
     return toReturn;
   },
   handleChange: function(event) {
-    const command = this.getCommand(event.currentTarget.value);
+    const command = this.getCommand(event.currentTarget.command);
     let session = editor.session;
 
     //append to end of ace editor
@@ -46,7 +46,7 @@ var CheckBox = React.createClass({
     var command = this.props.command;
     return (
       <div className="checkBox">
-        <input key={this.props.key} type='checkbox' name='vimrcCommand' value={command.value} onChange={this.handleChange}/> <b>{command.command}</b> -- {command.description}<br/>
+        <input key={this.props.key} type='checkbox' name='vimrcCommand' id={command.command.replace(/ /g,'')} onChange={this.handleChange}/> <b>{command.command}</b> -- {command.description}<br/>
       </div>
     );
   }
