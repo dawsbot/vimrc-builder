@@ -16,6 +16,8 @@
     <script src="../node_modules/react-dom/dist/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
 
+    <link rel="stylesheet" href="../node_modules/hint.css/hint.min.css"></link>
+
     <!-- Latest compiled and minified bootstrap CSS -->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 
@@ -37,25 +39,17 @@
     <div class="row">
       <div class="col-md-6">
         Choose vimrc options here
+
+        //React element
         <div id="example"></div>
         <script type="text/babel" src="js/react/example.js"></script>
-        <!--   ReactDOM.render( -->
-        <!--     <h1>Hello from react!</h1>, -->
-        <!--     document.getElementById('example') -->
-        <!--   ); -->
-        <!-- </script> -->
       </div>
 
       <div id="ace_wrapper" class="col-md-6">
-
-    <div id="editor">"""""""""" Line Numbering """"""""""
-set relativenumber
-set number
-
-"""""""""" Created at https://github.com/dawsonbotsford/vimrcBuilder """"""""""
-  </div>
-
+        <div id="editor">""" Created with https://github.com/dawsonbotsford/vimrcBuilder """</div>
+        <button class="btn downloadButton">Download</button>
       </div>
+
     </div>
   </body>
 
