@@ -14,7 +14,7 @@
   </a>
 
   <a href="https://travis-ci.org/dawsonbotsford/vimrcBuilder">
-    <img src="https://travis-ci.org/dawsonbotsford/vimrcBuilder.svg?branch=master)" />
+    <img src="https://travis-ci.org/dawsonbotsford/vimrcBuilder.svg?branch=master" />
   </a>
 
 <br>
