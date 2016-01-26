@@ -1,9 +1,8 @@
 [
-
   {
     "command": "set number",
     "value": "setNumber",
-    "description": "Show absolute line numbers on the left. (The line numbering you're likely used to"
+    "description": "Show absolute line numbers on the left. Like in the code editor on the right)"
   },
   {
     "command": "set relativenumber",
@@ -11,9 +10,19 @@
     "description": "Show relative line numbers on the left. These change based upon where your cursor is."
   },
   {
-    "command": "testComman",
-    "value": "testVal",
-    "description": "testDesc"
+    "command": "syntax on",
+    "value": "syntaxOn",
+    "description": "Turns syntax hilighting on"
+  },
+  {
+    "command": "set ai",
+    "value": "setAi",
+    "description": "Sets auto-indentation"
+  },
+  {
+    "command": "set si",
+    "value": "setSi",
+    "description": "Sets smart-indentation"
   }
 ]
 

@@ -2,11 +2,13 @@
 
 let commands = require('../../commands.json');
 
+
 //Children elements
 var CheckBox = React.createClass({
   //Get command from value in commands object
   getCommand: function(val) {
     for (let command of commands) {
+      // debugger;
       if (command.value == val) {
         return command.command;
       }
@@ -16,7 +18,7 @@ var CheckBox = React.createClass({
   //take in string and return line number in which it exists in ace
   getLine: function(str) {
     var arr = editor.getSession().getValue().split('\n');
-    var toReturn = -1;
+    let toReturn = -1;
     arr.forEach(function(line, index) {
       if (line.includes(str)) {
         console.log('found string on line ' + index);
@@ -48,8 +50,8 @@ var CheckBox = React.createClass({
   render: function() {
     var command = this.props.command;
     return (
-      <div>
-        <input type='checkbox' name='vimrcCommand' value={command.value} onChange={this.handleChange}/> {command.command}<br/>
+      <div className="checkBox">
+        <input type='checkbox' name='vimrcCommand' value={command.value} onChange={this.handleChange}/> <b>{command.command}</b> -- {command.description}<br/>
       </div>
     );
   }

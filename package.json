@@ -37,7 +37,13 @@
     "url": "git+https://github.com/dawsonbotsford/vimrcBuilder.git"
   },
   "keywords": [
-    "vimrc"
+    "vimrc",
+    "React",
+    "React.js",
+    "web app",
+    "vim",
+    "vimscript",
+    "javascript"
   ],
   "author": "Dawson Botsford <dawsonbotsford@gmail.com> (http://dawsonbotsford.com)",
   "license": "MIT",
