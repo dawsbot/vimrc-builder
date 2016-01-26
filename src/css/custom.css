@@ -19,7 +19,7 @@
   border-color: grey;
 }
 #editor {
-  height: 500px;
+  height: 460px;
   padding: 10px;
   position: absolute;
   top: 0;
@@ -36,5 +36,5 @@ body {
   float: right;
   position: relative;
   margin: 16px;
-  bottom: 80px;
+  bottom: 140px;
 }
