@@ -72,7 +72,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-contrib-watch');
-
+  grunt.loadNpmTasks('grunt-html-validation');
   grunt.registerTask('lint', ['newer:eslint', 'newer:jsonlint']);
   grunt.registerTask('test', ['lint']);
   grunt.registerTask('build', ['newer:copy', 'newer:cssmin', 'newer:uglify', 'browserify']);

@@ -18,6 +18,26 @@
   {
     "command": "set si",
     "description": "Sets smart-indentation"
+  },
+  {
+    "command": "set noswapfile",
+    "description": "Prevent vim from creating .swp files"
+  },
+  {
+    "command": "set cursorline",
+    "description": "Highlight current cursor line"
+  },
+  {
+    "command": "set cursorcolumn",
+    "description": "Highlight current cursor column"
+  },
+  {
+    "command": "set tabstop=2",
+    "description": "One tab should equal 2 space (default 4)"
+  },
+  {
+    "command": "set expandtab",
+    "description": "One tab should be comprised of spaces(\" \") instead of one tab (\"\\t\")"
   }
 ]
 
