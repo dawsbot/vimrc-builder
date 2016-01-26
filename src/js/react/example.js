@@ -13,19 +13,43 @@ var CheckBox = React.createClass({
     }
     return 'command not found';
   },
+  //take in string and return line number in which it exists in ace
+  getLine: function(str) {
+    var arr = editor.getSession().getValue().split('\n');
+    var toReturn = -1;
+    arr.forEach(function(line, index) {
+      if (line.includes(str)) {
+        console.log('found string on line ' + index);
+        toReturn = index + 1;
+      }
+    });
+    return toReturn;
+  },
   handleChange: function(event) {
+    const command = this.getCommand(event.currentTarget.value);
+    let session = editor.session;
 
+    //append to end of ace editor
     if (event.currentTarget.checked === true) {
-      console.log(`APPENDING ${this.getCommand(event.currentTarget.value)} to ace`);
-    } else {
-      console.log(`STRIPPING ${this.getCommand(event.currentTarget.value)} from ace`);
+      console.log(`APPENDING ${command} to ace`);
+        session.insert({
+          row: session.getLength(),
+          column: 0
+        }, '\n' + command);
+    }
+    //strip command from ace editor
+    else {
+      console.log(`STRIPPING ${command} from ace`);
+      var lineNumber = this.getLine(command);
+      editor.gotoLine(lineNumber, 0, false);
+      editor.removeLines();
     }
   },
   render: function() {
     var command = this.props.command;
     return (
       <div>
-        <input type="checkbox" name="vimrcCommand" value={command.value} onChange={this.handleChange}/> {command.command}<br/>
+        <input type='checkbox' name='vimrcCommand' value={command.value} onChange={this.handleChange}/> {command.command}<br/>
       </div>
     );
   }
