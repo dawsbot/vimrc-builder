@@ -4,11 +4,9 @@
   "description": "vimrc creation made easy",
   "main": "index.js",
   "dependencies": {
-    "babel-preset-react": "^6.3.13",
     "bootstrap": "^3.3.6",
     "express": "^4.13.3",
     "grunt": "^0.4.5",
-    "grunt-babel": "^6.0.0",
     "grunt-browserify": "^4.0.1",
     "grunt-cli": "^0.1.13",
     "grunt-contrib-copy": "^0.8.2",
@@ -24,13 +22,13 @@
   "devDependencies": {
     "eslint": "^1.10.3",
     "grunt-eslint": "^17.3.1",
-    "grunt-jsonlint": "^1.0.7",
-    "jsonlint": "^1.6.2"
+    "grunt-jsonlint": "^1.0.7"
   },
   "scripts": {
     "start": "node index.js",
     "test": "grunt test",
-    "postinstall": "grunt build",
+    "build": "grunt build",
+    "lint": "grunt lint",
     "newb": "npm install && grunt && open http://localhost:3000 && npm start"
   },
   "repository": {
