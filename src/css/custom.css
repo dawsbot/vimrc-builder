@@ -1,3 +1,13 @@
+.instructions {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.githubStar {
+  position: relative;
+  top: 29px;
+  padding-left: 20px;
+}
 .checkBox {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -21,4 +31,10 @@
 body {
   padding: 90px 90px 0px 90px;
   background-color: rgba(0,0,0,0.03);
+}
+.footer {
+  float: right;
+  position: relative;
+  margin: 16px;
+  bottom: 80px;
 }
