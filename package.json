@@ -28,6 +28,7 @@
     "start": "node index.js",
     "test": "grunt test",
     "build": "grunt build",
+    "postinstall": "grunt build",
     "lint": "grunt lint",
     "newb": "npm install && grunt && open http://localhost:3000 && npm start"
   },
