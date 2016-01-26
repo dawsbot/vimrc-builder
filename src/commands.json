@@ -1,27 +1,22 @@
 [
   {
     "command": "set number",
-    "value": "setNumber",
     "description": "Show absolute line numbers on the left. Like in the code editor on the right)"
   },
   {
     "command": "set relativenumber",
-    "value": "setRelativenumber",
     "description": "Show relative line numbers on the left. These change based upon where your cursor is."
   },
   {
     "command": "syntax on",
-    "value": "syntaxOn",
     "description": "Turns syntax hilighting on"
   },
   {
     "command": "set ai",
-    "value": "setAi",
     "description": "Sets auto-indentation"
   },
   {
     "command": "set si",
-    "value": "setSi",
     "description": "Sets smart-indentation"
   }
 ]

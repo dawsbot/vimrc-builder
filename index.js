@@ -7,5 +7,5 @@ app.use(express.static(__dirname + '/dist'));
 
 var port = process.argv[2] || process.env.PORT || 3000;
 app.listen(port, function () {
-    console.log('App listening on port ' + port);
+    console.log('vimrcBuilder running on port ' + port);
 });
