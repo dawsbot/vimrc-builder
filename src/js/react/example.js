@@ -7,7 +7,7 @@ var CheckBox = React.createClass({
   //Get command from value in commands object
   getCommand: function(val) {
     for (let command of commands) {
-      if (command.id == val) {
+      if (command.command.replace(/ /g,'') === val) {
         return command.command;
       }
     }
@@ -25,7 +25,7 @@ var CheckBox = React.createClass({
     return toReturn;
   },
   handleChange: function(event) {
-    const command = this.getCommand(event.currentTarget.command);
+    const command = this.getCommand(event.currentTarget.id);
     let session = editor.session;
 
     //append to end of ace editor
