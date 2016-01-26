@@ -34,12 +34,18 @@ var CheckBox = React.createClass({
           row: session.getLength(),
           column: 0
         }, '\n' + command);
+
+      //set checkbox background to green
+      event.target.parentElement.style.backgroundColor = 'lightgreen';
     }
     //strip command from ace editor
     else {
       var lineNumber = this.getLine(command);
       editor.gotoLine(lineNumber, 0, false);
       editor.removeLines();
+
+      //set checkbox background back to default
+      event.target.parentElement.style.backgroundColor = 'rgba(0,0,0,0.03)';
     }
   },
   render: function() {
