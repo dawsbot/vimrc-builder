@@ -16,16 +16,11 @@
     <script src="../node_modules/react-dom/dist/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
 
-    <link rel="stylesheet" href="../node_modules/hint.css/hint.min.css"></link>
-
-    <!-- Latest compiled and minified bootstrap CSS -->
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-
-    <!-- Optional Bootstrap theme -->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Custom css -->
     <link rel="stylesheet" href="css/custom.css">
 
@@ -40,15 +35,15 @@
       <div class="col-md-6">
         Choose vimrc options here
 
-        //React element
+        <!-- React element -->
         <div id="example"></div>
         <script type="text/babel" src="js/react/example.js"></script>
       </div>
 
       <div id="ace_wrapper" class="col-md-6">
         <div id="editor">""" Created with https://github.com/dawsonbotsford/vimrcBuilder """</div>
-        <button class="btn downloadButton">Download</button>
       </div>
+      <button class="btn downloadButton" onClick="downloadVimrc()">Download</button>
 
     </div>
   </body>
@@ -61,6 +56,9 @@
   var editor = ace.edit("editor");
   editor.setTheme("ace/theme/monokai");
   editor.resize();
+
+  editor.$blockScrolling = Infinity;
 </script>
 
+<script src="js/FileSaver.min.js"></script>
 <script src="js/main.js"></script>

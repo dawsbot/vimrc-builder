@@ -1,19 +1,17 @@
-//JS es6 implemented
+//es6 implemented
 
 let commands = require('../../commands.json');
-
 
 //Children elements
 var CheckBox = React.createClass({
   //Get command from value in commands object
   getCommand: function(val) {
     for (let command of commands) {
-      // debugger;
       if (command.value == val) {
         return command.command;
       }
     }
-    return 'command not found';
+    return '\"\" error in getCommand function of CheckBox React element';
   },
   //take in string and return line number in which it exists in ace
   getLine: function(str) {
@@ -21,7 +19,6 @@ var CheckBox = React.createClass({
     let toReturn = -1;
     arr.forEach(function(line, index) {
       if (line.includes(str)) {
-        console.log('found string on line ' + index);
         toReturn = index + 1;
       }
     });
@@ -33,7 +30,6 @@ var CheckBox = React.createClass({
 
     //append to end of ace editor
     if (event.currentTarget.checked === true) {
-      console.log(`APPENDING ${command} to ace`);
         session.insert({
           row: session.getLength(),
           column: 0
@@ -41,7 +37,6 @@ var CheckBox = React.createClass({
     }
     //strip command from ace editor
     else {
-      console.log(`STRIPPING ${command} from ace`);
       var lineNumber = this.getLine(command);
       editor.gotoLine(lineNumber, 0, false);
       editor.removeLines();
@@ -51,7 +46,7 @@ var CheckBox = React.createClass({
     var command = this.props.command;
     return (
       <div className="checkBox">
-        <input type='checkbox' name='vimrcCommand' value={command.value} onChange={this.handleChange}/> <b>{command.command}</b> -- {command.description}<br/>
+        <input key={this.props.key} type='checkbox' name='vimrcCommand' value={command.value} onChange={this.handleChange}/> <b>{command.command}</b> -- {command.description}<br/>
       </div>
     );
   }
@@ -61,9 +56,9 @@ var CheckBox = React.createClass({
 var CheckBoxes = React.createClass({
   render: function() {
     let checkList = [];
-    for (let command of commands) {
-      checkList.push(<CheckBox command={command} />);
-    }
+    commands.forEach(function (command, index) {
+      checkList.push(<CheckBox command={command} key={index}/>);
+    });
     return (
       <form>
         {checkList}

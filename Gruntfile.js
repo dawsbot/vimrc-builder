@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     eslint: {
-      lint_jsFiles: [jsFiles, notAce]
+      lint_jsFiles: [jsFiles, notAce, '!src/js/FileSaver.min.js']
     },
     jsonlint: {
       lint_jsonFiles: jsonFiles
@@ -17,7 +17,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: 'src',
-            src: ['*', '**/*', '!css/*', '!js/*'],
+            src: ['*', '**/*', '!css/*', '!js/*', 'js/FileSaver.min.js'],
             dest: 'dist'
           }
         ]
