@@ -1,5 +1,5 @@
 <p align="center">
-  <a><img src="img/mvp.png" title="MVP demo"/></a>
+  <a><img src="img/demo1.gif" title="MVP demo"/></a>
 </p>
 
 <p align="center">
@@ -17,8 +17,7 @@
     <img src="https://travis-ci.org/dawsonbotsford/vimrcBuilder.svg?branch=master" />
   </a>
 
-<br>
-<b>Warning, repo under heavy construction</b>
+  <br>
 </p>
 
 <br>
