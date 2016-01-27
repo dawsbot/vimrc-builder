@@ -64,3 +64,10 @@ As grunt builds the `/dist` directory, you will see updates by running `node ind
 <br>
 ## License
 MIT
+
+<br>
+## ChangeLog
+[CHANGELOG.md](/CHANGELOG.md) contains the auto-generated Changelog
+
+<br>
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/dawsonbotsford/vimrcbuilder/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
