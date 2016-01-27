@@ -7,8 +7,8 @@
 
     <title>vimrcBuilder - Customize vim quickly</title>
 
-    <!-- github octicons -->
-    <link rel="stylesheet" href="../node_modules/octicons/octicons/octicons.css">
+    <!-- Custom css -->
+    <link rel="stylesheet" href="css/custom.css">
 
     <!-- jquery -->
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
@@ -20,9 +20,6 @@
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-
-    <!-- Custom css -->
-    <link rel="stylesheet" href="css/custom.css">
 
 
   </head>
@@ -40,6 +37,9 @@
         <!-- React element -->
         <div id="example"></div>
         <script type="text/babel" src="js/react/example.js"></script>
+        <b>Looking for more commands?</b> <a href="https://github.com/dawsonbotsford/vimrcBuilder/blob/master/src/commands.json">Contribute!</a>
+        <br/>
+        <a href="http://vim.wikia.com/wiki/Open_vimrc_file">What's a vimrc?</a>
       </div>
 
       <div class="col-md-6">
@@ -50,12 +50,13 @@
 
       <div id="ace_wrapper" class="col-md-6">
 
-        <div id="editor">""" Created with https://github.com/dawsonbotsford/vimrcBuilder """</div>
+        <div id="editor">""" Created with https://github.com/dawsonbotsford/vimrcBuilder """
+        </div>
       </div>
     </div>
 
     <div class="row footer">
-      <button class="btn downloadButton" onClick="downloadVimrc()">Download</button>
+      <button class="btn downloadButton" onClick="editor.selectAll()">Select all text</button>
       <iframe class="githubStar" src="https://ghbtns.com/github-btn.html?user=dawsonbotsford&repo=vimrcBuilder&type=star&count=true&size=large" frameborder="0" scrolling="0" width="180px" height="50px"></iframe>
     </div>
 
@@ -69,9 +70,6 @@
 
     editor.$blockScrolling = Infinity;
   </script>
-
-  <script src="js/FileSaver.min.js"></script>
-  <script src="js/main.js"></script>
 
   <!-- Google website tracking -->
   <script>
