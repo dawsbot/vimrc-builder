@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "vimrc creation made easy",
   "main": "index.js",
+  "engines": {
+    "node": "4.2.6",
+    "npm": "2.14.2"
+  },
   "dependencies": {
     "bootstrap": "^3.3.6",
     "express": "^4.13.3",
