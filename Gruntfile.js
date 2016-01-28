@@ -61,17 +61,11 @@ module.exports = function(grunt) {
           'dist/js/react/example.js': ['src/js/react/example.js']
         }
       }
-    }
+    },
+    clean: ["dist"]
   });
 
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-browserify');
-  grunt.loadNpmTasks('grunt-eslint');
-  grunt.loadNpmTasks('grunt-jsonlint');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-newer');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  require('load-grunt-tasks')(grunt);
 
   grunt.registerTask('lint', ['newer:eslint', 'newer:jsonlint']);
   grunt.registerTask('test', ['lint']);
