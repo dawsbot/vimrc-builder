@@ -33,7 +33,7 @@
   },
   {
     "command": "set tabstop=2",
-    "description": "One tab should equal 2 space (default 4)"
+    "description": "One tab should equal 2 spaces (default 4)"
   },
   {
     "command": "set expandtab",
