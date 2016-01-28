@@ -38,6 +38,10 @@
   {
     "command": "set expandtab",
     "description": "One tab should be comprised of spaces(\" \") instead of one tab (\"\\t\")"
+  },
+  {
+    "command": "set hlsearch",
+    "description": "highlights matches to search"
   }
 ]
 
