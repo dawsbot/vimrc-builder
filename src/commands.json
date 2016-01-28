@@ -9,7 +9,7 @@
   },
   {
     "command": "syntax on",
-    "description": "Turns syntax hilighting on"
+    "description": "Turns syntax highlighting on"
   },
   {
     "command": "set ai",

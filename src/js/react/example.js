@@ -51,7 +51,7 @@ var CheckBox = React.createClass({
   render: function() {
     var command = this.props.command;
     return (
-      <div className="checkBox">
+      <div className="checkBox" hidden={this.props.hidden}>
         <input key={this.props.key} type='checkbox' name='vimrcCommand' id={command.command.replace(/ /g,'')} onChange={this.handleChange}/> <b>{command.command}</b> -- {command.description}<br/>
       </div>
     );
@@ -106,7 +106,9 @@ var CheckBoxes = React.createClass({
     commands.forEach(function (command, index) {
       /* Only include if searched for */
       if (this.doesInclude(command, searchVal)){
-        checkList.push(<CheckBox command={command} key={index}/>);
+        checkList.push(<CheckBox command={command} key={index} hidden={false}/>);
+      } else {
+        checkList.push(<CheckBox command={command} key={index} hidden={true}/>);
       }
     }.bind(this))
 
