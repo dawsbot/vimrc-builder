@@ -51,24 +51,74 @@ var CheckBox = React.createClass({
   render: function() {
     var command = this.props.command;
     return (
-      <div className="checkBox">
+      <div className="checkBox" hidden={this.props.hidden}>
         <input key={this.props.key} type='checkbox' name='vimrcCommand' id={command.command.replace(/ /g,'')} onChange={this.handleChange}/> <b>{command.command}</b> -- {command.description}<br/>
       </div>
     );
   }
 });
 
+var SearchBox = React.createClass({
+  handleChange: function(event) {
+    console.log(event.target.value);
+    this.props.handleSearchChange(event.target.value);
+  },
+
+  render: function() {
+    return(
+      <div>
+        Search (by command or description): <input type="text" onChange={this.handleChange}/>
+      </div>
+    );
+  },
+});
+
 //Parent element
 var CheckBoxes = React.createClass({
+  getInitialState: function(){
+    return {'searchboxValue': ""}
+  },
+
+  handleSearchChange: function(val) {
+    this.setState({
+    searchBoxValue: val,
+    });
+  },
+
+  normalize: function(str){
+    if (str){
+      return str.toLowerCase();
+    } else {
+      return "";
+    }
+  },
+
+  doesInclude: function(cmd, searchVal){
+    if (this.normalize(cmd.description).includes(searchVal) || this.normalize(cmd.command).includes(searchVal))
+      return true;
+    else
+      return false;
+  },
+
   render: function() {
     let checkList = [];
+    var searchVal = this.normalize(this.state.searchBoxValue);
     commands.forEach(function (command, index) {
-      checkList.push(<CheckBox command={command} key={index}/>);
-    });
+      /* Only include if searched for */
+      if (this.doesInclude(command, searchVal)){
+        checkList.push(<CheckBox command={command} key={index} hidden={false}/>);
+      } else {
+        checkList.push(<CheckBox command={command} key={index} hidden={true}/>);
+      }
+    }.bind(this))
+
     return (
-      <form>
-        {checkList}
-      </form>
+      <div>
+        <SearchBox handleSearchChange={this.handleSearchChange}/>
+        <form>
+          {checkList}
+        </form>
+      </div>
     );
   }
 });
