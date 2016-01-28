@@ -34,18 +34,6 @@ module.exports = function(grunt) {
         }]
       }
     },
-    uglify: {
-      uglifying_jsFiles: {
-        options: {
-          banner: '/*! Uglified on <%= grunt.template.today("yyyy-mm-dd") %> */\n',
-          sourceMap: true,
-          sourceMapName: 'dist/js/main.js.map'
-        },
-        files: {
-          'dist/js/main.js': ['src/js/main.js']
-        }
-      }
-    },
     watch: {
       all: {
         files: 'src/**/*',
@@ -69,6 +57,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('lint', ['newer:eslint', 'newer:jsonlint']);
   grunt.registerTask('test', ['lint']);
-  grunt.registerTask('build', ['newer:copy', 'newer:cssmin', 'newer:uglify', 'browserify']);
+  grunt.registerTask('build', ['newer:copy', 'newer:cssmin', 'browserify']);
+  grunt.registerTask('production', ['copy', 'cssmin', 'browserify']);
   grunt.registerTask('default', ['test', 'build']);
 };
