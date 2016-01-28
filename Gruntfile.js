@@ -1,4 +1,4 @@
-var jsFiles = 'src/**/*.js';
+var jsFiles = 'src/react/*.js';
 var notAce = '!src/ace/**/*';
 var jsonFiles = ['*.json', 'src/**/*.json', notAce];
 
@@ -17,7 +17,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: 'src',
-            src: ['*', '**/*', '!css/*', '!js/*', 'js/FileSaver.min.js'],
+            src: ['*', '**/*', '!css/custom.css', '!js/react/*'],
             dest: 'dist'
           }
         ]
