@@ -67,7 +67,7 @@ var SearchBox = React.createClass({
   render: function() {
     return(
       <div>
-        Search (by command or description): <input type="text" onChange={this.handleChange}/>
+        <input type="text" onChange={this.handleChange} className="form-control" placeholder="Search"/>
       </div>
     );
   },
