@@ -36,12 +36,74 @@
     "description": "One tab should equal 2 spaces (default 4)"
   },
   {
+    "command": "set shiftwidth=2",
+    "description": "Arrow function (>>) also indents 2 spaces"
+  },
+  {
     "command": "set expandtab",
     "description": "One tab should be comprised of spaces(\" \") instead of one tab (\"\\t\")"
   },
+
+  {
+    "command": "set smarttab",
+    "description": "Be smart when using tabs"
+  },
+
+  {
+    "command": "set expandtab",
+    "description": "One tab should be comprised of spaces(\" \") instead of one tab (\"\\t\")"
+  },  {
+  "command": "set expandtab",
+  "description": "One tab should be comprised of spaces(\" \") instead of one tab (\"\\t\")"
+  },
+  {
+    "command": "set wrap",
+    "description": "wrap lines"
+  },
   {
     "command": "set hlsearch",
-    "description": "highlights matches to search"
+    "description": "Highlights matches to search"
+  },
+  {
+    "command": "set ignorecase",
+    "description": "Ignore case when searching"
+  },
+  {
+    "command": "set smartcase",
+    "description": "Be smart about case when searching"
+  },
+  {
+    "command": "set cmdheight=2",
+    "description": "Set height of the command bar to 2"
+  },
+  {
+    "command": "set set ttyfast",
+    "description": "Boost speed by altering character redraw rates to your terminal"
+  },
+
+  {
+    "command": "set showmatch",
+    "description": "Show matching brackets when text indicator is over them"
+  },
+  {
+    "command": "set noerrorbells",
+    "description": "Never play an error bell"
+  },
+  {
+    "command": "set novisualbells",
+    "description": "Never show an error bell"
+  },
+  {
+    "command": "set foldcolumn=1",
+    "description": "Place a width 1 margin on the left"
+  },
+  {
+    "command": "set encoding=utf8",
+    "description": "Set utf8 as standard encoding and en_US as the standard language"
+  },
+  {
+    "command": "set expandtab",
+    "description": "Set height of the command bar to 2"
   }
 ]
 
