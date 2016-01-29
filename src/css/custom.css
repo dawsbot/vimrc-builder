@@ -20,21 +20,10 @@
 }
 #editor {
   height: 460px;
-  padding: 10px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  position: relative;
   border-radius: 3px;
 }
 body {
   padding: 90px 90px 0px 90px;
   background-color: rgba(0,0,0,0.03);
-}
-.footer {
-  float: right;
-  position: relative;
-  margin: 16px;
-  bottom: 140px;
 }
