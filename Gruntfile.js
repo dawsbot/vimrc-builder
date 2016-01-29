@@ -17,7 +17,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: 'src',
-            src: ['*', '**/*', '!css/custom.css', '!js/cookie.js', '!js/react/*'],
+            src: ['*', '**/*', '!css/custom.css', '!js/react/*'],
             dest: 'dist'
           }
         ]
@@ -41,17 +41,12 @@ module.exports = function(grunt) {
       }
     },
     browserify: {
-      react: {
+      dist: {
         options: {
           transform: ['reactify']
         },
         files: {
-          'dist/js/react/example.js': ['src/js/react/example.js'],
-        }
-      },
-      normal: {
-        files: {
-          'dist/js/cookie.js': ['src/js/cookie.js']
+          'dist/js/react/example.js': ['src/js/react/example.js']
         }
       }
     },
