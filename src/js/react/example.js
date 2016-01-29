@@ -1,5 +1,12 @@
 //es6 implemented
 
+console.log('\
+         _                     ____        _ __    __\n\
+  _   __(_)___ ___  __________/ __ )__  __(_) /___/ /__  _____\n\
+ | | / / / __ `__ \\/ ___/ ___/ __  / / / / / / __  / _ \\/ ___/\n\
+ | |/ / / / / / / / /  / /__/ /_/ / /_/ / / / /_/ /  __/ /\n\
+ |___/_/_/ /_/ /_/_/   \\___/_____/\\__,_/_/_/\\__,_/\\___/_/\n\
+ \nThank you for checking out vimrcBuilder\'s console! \nYou seem like a hacker, if so, consider contributing here https://github.com/dawsonbotsford/vimrcBuilder.\n');
 let commands = require('../../commands.json');
 
 //Children elements
@@ -40,12 +47,19 @@ var CheckBox = React.createClass({
     }
     //strip command from ace editor
     else {
+      //save cursor position
+      const currentPosition = editor.getCursorPosition();
+
+      //find & save line to remove
       var lineNumber = this.getLine(command);
       editor.gotoLine(lineNumber, 0, false);
       editor.removeLines();
 
       //set checkbox background back to default
       event.target.parentElement.style.backgroundColor = 'rgba(0,0,0,0.03)';
+
+      //return cursor position
+      editor.moveCursorTo(currentPosition);
     }
   },
   render: function() {
@@ -60,7 +74,7 @@ var CheckBox = React.createClass({
 
 var SearchBox = React.createClass({
   handleChange: function(event) {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     this.props.handleSearchChange(event.target.value);
   },
 
