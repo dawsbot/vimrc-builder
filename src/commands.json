@@ -43,18 +43,9 @@
     "command": "set expandtab",
     "description": "One tab should be comprised of spaces(\" \") instead of one tab (\"\\t\")"
   },
-
   {
     "command": "set smarttab",
     "description": "Be smart when using tabs"
-  },
-
-  {
-    "command": "set expandtab",
-    "description": "One tab should be comprised of spaces(\" \") instead of one tab (\"\\t\")"
-  },  {
-  "command": "set expandtab",
-  "description": "One tab should be comprised of spaces(\" \") instead of one tab (\"\\t\")"
   },
   {
     "command": "set wrap",
@@ -77,7 +68,7 @@
     "description": "Set height of the command bar to 2"
   },
   {
-    "command": "set set ttyfast",
+    "command": "set ttyfast",
     "description": "Boost speed by altering character redraw rates to your terminal"
   },
 
@@ -86,7 +77,7 @@
     "description": "Show matching brackets when text indicator is over them"
   },
   {
-    "command": "set noerrorbells",
+    "command": "set noerrorbell",
     "description": "Never play an error bell"
   },
   {
@@ -100,10 +91,6 @@
   {
     "command": "set encoding=utf8",
     "description": "Set utf8 as standard encoding and en_US as the standard language"
-  },
-  {
-    "command": "set expandtab",
-    "description": "Set height of the command bar to 2"
   }
 ]
 
