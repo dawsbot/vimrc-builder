@@ -56,6 +56,10 @@
     "description": "Highlights matches to search"
   },
   {
+    "command": "set incsearch",
+    "description": "Display search results as you type (instead of only upon ENTER)"
+  },
+  {
     "command": "set ignorecase",
     "description": "Ignore case when searching"
   },
