@@ -4,11 +4,15 @@
 
 **Closed issues:**
 
+- Add favicon [\#8](https://github.com/dawsonbotsford/vimrcBuilder/issues/8)
+- on insert and remove, don't move cursor [\#7](https://github.com/dawsonbotsford/vimrcBuilder/issues/7)
 - hilight all text button [\#6](https://github.com/dawsonbotsford/vimrcBuilder/issues/6)
 - include question mark more details [\#5](https://github.com/dawsonbotsford/vimrcBuilder/issues/5)
 
 **Merged pull requests:**
 
+- add hlsearch command [\#10](https://github.com/dawsonbotsford/vimrcBuilder/pull/10) ([alexwalling](https://github.com/alexwalling))
+- Add basic search functionality - needs styling [\#9](https://github.com/dawsonbotsford/vimrcBuilder/pull/9) ([BrianNewsom](https://github.com/BrianNewsom))
 - switch from bower to npm [\#1](https://github.com/dawsonbotsford/vimrcBuilder/pull/1) ([rimunroe](https://github.com/rimunroe))
 
 
