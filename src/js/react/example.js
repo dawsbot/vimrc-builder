@@ -124,7 +124,7 @@ var CheckBoxes = React.createClass({
       } else {
         checkList.push(<CheckBox command={command} key={index} hidden={true}/>);
       }
-    }.bind(this))
+    }.bind(this));
 
     return (
       <div>
