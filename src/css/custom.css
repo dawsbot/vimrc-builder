@@ -24,5 +24,11 @@
 }
 body {
   padding: 90px 90px 90px 90px;
+  padding-bottom: 0;
   background-color: rgba(0,0,0,0.03);
+}
+form {
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
 }
