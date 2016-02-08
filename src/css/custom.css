@@ -29,6 +29,6 @@ body {
 }
 form {
   height: auto;
-  max-height: 460px;
+  max-height: 68vh;
   overflow-x: hidden;
 }
