@@ -5,7 +5,7 @@
   },
   {
     "command": "set numberwidth=3",
-    "description": "Sets width of the 'gutter' column used for numbering to 3"
+    "description": "Sets width of the 'gutter' column used for numbering to 3 (default 4)"
   },
   {
     "command": "set relativenumber",
