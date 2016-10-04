@@ -4,6 +4,10 @@
     "description": "Show absolute line numbers on the left. Like in the code editor on the right)"
   },
   {
+    "command": "set numberwidth=3",
+    "description": "Sets width of the 'gutter' column used for numbering to 3"
+  },
+  {
     "command": "set relativenumber",
     "description": "Show relative line numbers on the left. These change based upon where your cursor is."
   },
