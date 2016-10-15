@@ -9,8 +9,7 @@
   padding-left: 20px;
 }
 .checkBox {
-  margin-top: 6px;
-  margin-bottom: 6px;
+  margin: 6px 1px;
   padding: 10px;
   border-radius: 3px;
   border-style: solid;
