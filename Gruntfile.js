@@ -46,7 +46,7 @@ module.exports = function(grunt) {
           transform: ['reactify']
         },
         files: {
-          'dist/js/react/example.js': ['src/js/react/example.js']
+          'dist/js/components/App.js': ['src/js/components/App.js']
         }
       }
     },
