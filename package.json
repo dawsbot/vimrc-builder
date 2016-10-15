@@ -1,6 +1,6 @@
 {
   "name": "vimrcbuilder",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "vimrc creation made easy",
   "main": "index.js",
   "engines": {
