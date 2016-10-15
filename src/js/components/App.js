@@ -5,46 +5,33 @@ console.log('\
  | |/ / / / / / / / /  / /__/ /_/ / /_/ / / / /_/ /  __/ /\n\
  |___/_/_/ /_/ /_/_/   \\___/_____/\\__,_/_/_/\\__,_/\\___/_/\n\
  \nThank you for checking out vimrcBuilder\'s console! \nYou seem like a hacker, if so, consider contributing here https://github.com/dawsonbotsford/vimrcBuilder.\n');
-const commands = require('../../commands.json');
+
 const CheckBox = require('./CheckBox');
+const SearchBox = require('./SearchBox');
 
-const SearchBox = React.createClass({
-  handleChange: function(event) {
-    // console.log(event.target.value);
-    this.props.handleSearchChange(event.target.value);
-  },
-
-  render: function() {
-    return(
-      <div>
-        <input type="text" onChange={this.handleChange} className="form-control" placeholder="Search"/>
-      </div>
-    );
-  },
-});
+const commands = require('../../commands.json');
+const levenshtein = require('fast-levenshtein');
 
 //Parent element
 const CheckBoxes = React.createClass({
   getInitialState: function(){
-    return {'searchboxValue': ''};
+    return {
+      'searchboxValue': ''
+    };
   },
 
   handleSearchChange: function(val) {
     this.setState({
-    searchBoxValue: val,
+      searchBoxValue: val
     });
   },
 
   normalize: function(str){
-    if (str){
-      return str.toLowerCase();
-    } else {
-      return '';
-    }
+    return str ? str.toLowerCase() : '';
   },
 
   doesInclude: function(cmd, searchVal){
-    return (this.normalize(cmd.description).includes(searchVal) || this.normalize(cmd.command).includes(searchVal));
+    return (this.normalize([cmd.description, cmd.command].join(' ')).includes(searchVal));
   },
 
   render: function() {
