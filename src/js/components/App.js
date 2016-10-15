@@ -10,7 +10,6 @@ const CheckBox = require('./CheckBox');
 const SearchBox = require('./SearchBox');
 
 const commands = require('../../commands.json');
-const levenshtein = require('fast-levenshtein');
 
 //Parent element
 const CheckBoxes = React.createClass({

@@ -41,7 +41,6 @@ const CheckBox = React.createClass({
     return (
       <div className="checkBox" hidden={this.props.hidden}>
         <input
-        key={this.props.key}
         type='checkbox'
         onChange={this.handleChange}
         /> <b>{command.command}</b> -- {command.description}<br/>
