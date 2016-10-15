@@ -10,6 +10,7 @@ const CheckBox = require('./CheckBox');
 const SearchBox = require('./SearchBox');
 
 const commands = require('../../commands.json');
+const version = require('../../../package.json').version;
 
 //Parent element
 const CheckBoxes = React.createClass({
@@ -38,10 +39,11 @@ const CheckBoxes = React.createClass({
     const searchVal = this.normalize(this.state.searchBoxValue);
     commands.forEach(function (command, index) {
       /* Only include if searched for */
-        checkList.push(<CheckBox
-          command={command}
-          key={index}
-          hidden={!this.doesInclude(command, searchVal)}/>);
+      checkList.push(<CheckBox
+        command={command}
+        key={index}
+        hidden={!this.doesInclude(command, searchVal)}
+      />);
     }.bind(this));
 
     return (
@@ -50,6 +52,11 @@ const CheckBoxes = React.createClass({
         <form>
           {checkList}
         </form>
+        <p>
+          <small>
+            {`v${version}`}
+          </small>
+        </p>
       </div>
     );
   }
