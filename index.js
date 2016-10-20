@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 
+process.env.NODE_ENV = 'production';
+
 //open up resources to be publicly viewable
 app.use(express.static(__dirname + '/'));
 app.use(express.static(__dirname + '/dist'));
