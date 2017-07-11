@@ -13,15 +13,23 @@ const CheckBox = React.createClass({
   handleChange: function(event) {
     const command = this.props.command.command;
     let session = editor.session;
+    let checkbox;
+    if (event.currentTarget.tagName == 'INPUT') {
+      checkbox = event.currentTarget;
+    }
+    else {
+      checkbox = event.currentTarget.firstChild;
+    }
+    checkbox.checked = !checkbox.checked;
 
     // append to end of ace editor
-    if (event.currentTarget.checked) {
+    if (checkbox.checked) {
         session.insert({
           row: session.getLength(),
           column: 0
         }, '\n' + command);
 
-      event.target.parentElement.style.backgroundColor = 'lightgreen';
+      checkbox.parentElement.style.backgroundColor = 'lightgreen';
     }
     // remove command from ace editor
     else {
@@ -33,13 +41,15 @@ const CheckBox = React.createClass({
       editor.removeLines();
       editor.moveCursorTo(currentPosition);
 
-      event.target.parentElement.style.backgroundColor = 'rgba(0,0,0,0.03)';
+      checkbox.parentElement.style.backgroundColor = 'rgba(0,0,0,0.03)';
     }
   },
   render: function() {
     const command = this.props.command;
     return (
-      <div className="checkBox" hidden={this.props.hidden}>
+      <div onClick={this.handleChange}
+           className="checkBox"
+           hidden={this.props.hidden}>
         <input
         type='checkbox'
         onChange={this.handleChange}
