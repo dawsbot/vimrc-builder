@@ -1,6 +1,6 @@
 {
   "name": "vimrcbuilder",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "vimrc creation made easy",
   "main": "index.js",
   "engines": {
@@ -40,7 +40,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dawsonbotsford/vimrcBuilder.git"
+    "url": "git+https://github.com/dawsbot/vimrcBuilder.git"
   },
   "keywords": [
     "vimrc",
@@ -51,10 +51,10 @@
     "vimscript",
     "javascript"
   ],
-  "author": "Dawson Botsford <dawsonbotsford@gmail.com> (http://dawsonbotsford.com)",
+  "author": "Dawson Botsford <dawsonbotsford@gmail.com> (https://dawsbot.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dawsonbotsford/vimrcBuilder/issues"
+    "url": "https://github.com/dawsbot/vimrcBuilder/issues"
   },
-  "homepage": "https://github.com/dawsonbotsford/vimrcBuilder#readme"
+  "homepage": "https://github.com/dawsbot/vimrcBuilder#readme"
 }
