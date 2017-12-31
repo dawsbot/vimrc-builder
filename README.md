@@ -51,6 +51,15 @@ Example: `syntax on` in your vimrc enables syntax hi-lighting
 
 Please do! If you want to add more vim commands, find those [here](https://github.com/dawsbot/vimrcBuilder/blob/master/src/commands.json). If you have a feature request, submit an [issue](https://github.com/dawsbot/vimrcBuilder/issues).
 
+#### Color Palette
+
+Inspired by [Laura](https://twitter.com/laurium)'s [article on color theory in web apps](https://www.smashingmagazine.com/2016/04/web-developer-guide-color/), this application was themed with the following palette:
+
+* Primary: (light pink) #fd746c (right side of background gradient)
+* Secondary: (juicy green): #BBEB64
+* Near white pink: #fff5f5 (use instead of white)
+* Near black pink:  #1f0200 (use instead of black)
+
 <br/>
 
 ## License

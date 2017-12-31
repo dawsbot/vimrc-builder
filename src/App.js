@@ -3,17 +3,24 @@ import styled from 'styled-components';
 
 import LeftHalf from './components/LeftHalf';
 import RightHalf from './components/RightHalf';
+import StaticPageContent from './components/StaticPageContent';
 
 const AppWrapper = styled.div`
-  margin: 100px;
+  padding: 100px;
+  /* separate app from static page content */
+  /* margin-bottom: 160px; */
   display: flex;
-  font-size: 16px;
 
   /* desktop first css */
   flex-direction: row;
   @media (max-width: 900px) {
     flex-direction: column;
   }
+
+  /* background gradient with fallback */
+  background: #fd746c;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ff9068, #fd746c);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ff9068, #fd746c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 `;
 
 class App extends Component {
@@ -34,11 +41,14 @@ class App extends Component {
 
   render() {
     return (
-      <AppWrapper>
-        <LeftHalf
-          onAppendVimrcContent={this.appendVimrcContent}/>
-        <RightHalf textContentArr={this.state.vimrcTextContent}/>
-      </AppWrapper>
+      <div>
+        <AppWrapper>
+          <LeftHalf
+            onAppendVimrcContent={this.appendVimrcContent}/>
+          <RightHalf textContentArr={this.state.vimrcTextContent}/>
+        </AppWrapper>
+        <StaticPageContent/>
+      </div>
     );
   }
 }

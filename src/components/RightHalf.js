@@ -17,7 +17,7 @@ const RightHalfWrapper = styled.div`
 
 const VimrcContainer = styled.div`
   min-height: 300px;
-  font-family: "Hack", monospace;
+  font-family: monospace;
   font-size: 16px;
 
   border: 1px solid black;
