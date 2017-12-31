@@ -7,9 +7,13 @@ import RightHalf from './components/RightHalf';
 const AppWrapper = styled.div`
   margin: 100px;
   display: flex;
-  flex-direction: row;
-
   font-size: 16px;
+
+  /* desktop first css */
+  flex-direction: row;
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
 `;
 
 class App extends Component {

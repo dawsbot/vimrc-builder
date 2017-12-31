@@ -8,8 +8,11 @@ import clipboadIconPath from '../ionicons/clipboard.svg';
 import arrowRightIconPath from '../ionicons/arrow-right-a.svg';
 
 const RightHalfWrapper = styled.div`
-  width: 60%;
   margin-right: 30px;
+  width: 100%;
+  @media (max-width: 900px) {
+    margin-top: 50px;
+  }
 `;
 
 const VimrcContainer = styled.div`
