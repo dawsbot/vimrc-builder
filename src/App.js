@@ -16,13 +16,13 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      // 2d array. elem 0 is command, 1 is comment
       vimrcTextContent: []
     };
   }
 
   // newText is an array where the first element is command and second is comment
   appendVimrcContent = (newText) => {
-    console.log([...this.state.vimrcTextContent, newText]);
     this.setState({
       vimrcTextContent: [...this.state.vimrcTextContent, newText]
     });
