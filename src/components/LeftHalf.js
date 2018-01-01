@@ -6,8 +6,7 @@ import vimCommands from '../vim-commands.json';
 import SectionHeader from './SectionHeader';
 
 const LeftHalfWrapper = styled.div`
-  width: 40%;
-  min-width: 400px;
+  min-width: 50%;
   margin-right: 30px;
   @media (max-width: 900px) {
     width: 100%;

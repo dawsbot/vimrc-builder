@@ -91,6 +91,8 @@ class RightHalf extends React.Component {
     const copyButtonText = copyClicked ?
       'Paste and enjoy!' :
       'Copy to clipboard';
+    const initialVimrcContent = '" Customizations for the vim editor. Read more at http://vimrc-builder.now.sh\n';
+
     return (
       <RightHalfWrapper>
         <SectionHeader>
@@ -103,7 +105,7 @@ class RightHalf extends React.Component {
           </FileContent>
 
           <CopyToClipboard
-            text={textContentArr.reduce((acc, [command, comment]) => `${acc}\n${command} " ${comment}`, '')}
+            text={textContentArr.reduce((acc, [command, comment]) => `${acc}\n${command} " ${comment}`, initialVimrcContent)}
             onCopy={this.handleCopyClick}>
             <IconWrapperButton style={{
               backgroundColor: copyClicked ? 'black' : '#fff5f5'
