@@ -12,8 +12,8 @@
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT Licensed" />
   </a>
 
-  <a href="https://travis-ci.org/dawsbot/vimrcBuilder">
-    <img src="https://travis-ci.org/dawsbot/vimrcBuilder.svg?branch=master" />
+  <a href="https://travis-ci.org/dawsbot/vimrc-builder">
+    <img src="https://travis-ci.org/dawsbot/vimrc-builder.svg?branch=master" />
   </a>
 
   <br/>
@@ -28,7 +28,7 @@ Building a vimrc file should not be difficult. **You're configuring a code edito
 <br/>
 
 <p align="center">
-  <b>Build a snippet or an entire vimrc with vimrcBuilder</b>
+  <b>Build a snippet or an entire vimrc with vimrc-builder</b>
 </p>
 
 <br/>
@@ -49,7 +49,7 @@ Example: `syntax on` in your vimrc enables syntax hi-lighting
 
 ## Contributing
 
-Please do! If you want to add more vim commands, find those [here](https://github.com/dawsbot/vimrcBuilder/blob/master/src/commands.json). If you have a feature request, submit an [issue](https://github.com/dawsbot/vimrcBuilder/issues).
+Please do! If you want to add more vim commands, find those [here](https://github.com/dawsbot/vimrc-builder/blob/master/src/commands.json). If you have a feature request, submit an [issue](https://github.com/dawsbot/vimrc-builder/issues).
 
 #### Color Palette
 
