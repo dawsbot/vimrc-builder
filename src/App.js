@@ -6,7 +6,7 @@ import RightHalf from './components/RightHalf';
 import StaticPageContent from './components/StaticPageContent';
 
 const AppWrapper = styled.div`
-  padding: 100px;
+  padding: 5vw;
   display: flex;
 
   /* background gradient with fallback */
@@ -18,7 +18,6 @@ const AppWrapper = styled.div`
   flex-direction: row;
   @media (max-width: 900px) {
     flex-direction: column;
-    padding: 10px;
     padding-bottom: 100px;
   }
 `;
