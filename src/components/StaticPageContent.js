@@ -2,11 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
+  padding: 5vw;
+
   /* light pink */
   background-color: #fff5f5;
   /* near-black pink */
   color: 1px solid #1f0200;
-  padding: 100px;
+  /* padding: 100px; */
 `
 const StaticPageContent = () => (
   <Wrapper>
