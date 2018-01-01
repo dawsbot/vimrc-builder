@@ -8,13 +8,16 @@ import clipboadIconPath from '../ionicons/clipboard.svg';
 import arrowRightIconPath from '../ionicons/arrow-right-a.svg';
 
 const RightHalfWrapper = styled.div`
-  width: 60%;
   margin-right: 30px;
+  width: 100%;
+  @media (max-width: 900px) {
+    margin-top: 50px;
+  }
 `;
 
 const VimrcContainer = styled.div`
   min-height: 300px;
-  font-family: "Hack", monospace;
+  font-family: monospace;
   font-size: 16px;
 
   border: 1px solid black;
@@ -59,9 +62,6 @@ const FileContent = styled.div`
 
 `;
 
-const Command = styled.div`
-`;
-
 const Comment = styled.span`
   color: grey;
 `;
@@ -91,6 +91,8 @@ class RightHalf extends React.Component {
     const copyButtonText = copyClicked ?
       'Paste and enjoy!' :
       'Copy to clipboard';
+    const initialVimrcContent = '" Customizations for the vim editor. Read more at http://vimrc-builder.now.sh\n';
+
     return (
       <RightHalfWrapper>
         <SectionHeader>
@@ -99,11 +101,11 @@ class RightHalf extends React.Component {
         <VimrcContainer>
           {/* vimrc file content */}
           <FileContent>
-            {textContentArr.map(([text, comment], i) => (<Command key={i}>{text} <Comment>" {comment}</Comment></Command>))}
+            {textContentArr.map(([text, comment], i) => (<div key={i}>{text} <Comment>" {comment}</Comment></div>))}
           </FileContent>
 
           <CopyToClipboard
-            text={textContentArr.reduce((acc, curr) => `${acc}\n${curr}`, '')}
+            text={textContentArr.reduce((acc, [command, comment]) => `${acc}\n${command} " ${comment}`, initialVimrcContent)}
             onCopy={this.handleCopyClick}>
             <IconWrapperButton style={{
               backgroundColor: copyClicked ? 'black' : '#fff5f5'
