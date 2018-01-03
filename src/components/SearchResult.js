@@ -12,6 +12,8 @@ const ResultRow = styled.div`
   flex-direction: row;
   cursor: pointer;
   transition: box-shadow 300ms ease;
+  transition: background-color 1000ms ease;
+
   /* light pink */
   background-color: #fff5f5;
 

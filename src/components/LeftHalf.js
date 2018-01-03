@@ -6,8 +6,8 @@ import vimCommands from '../vim-commands.json';
 import SectionHeader from './SectionHeader';
 
 const LeftHalfWrapper = styled.div`
-  min-width: 50%;
-  margin-right: 30px;
+  min-width: 40%;
+  margin-right: 100px;
   @media (max-width: 900px) {
     width: 100%;
   }
@@ -122,7 +122,7 @@ class LeftHalf extends React.Component {
         </SectionHeader>
 
         <SearchInput
-          placeholder="Search here"
+          placeholder="Search"
           onChange={this.handleSearchInput}
           />
         <SearchResultsContainer>

@@ -20,12 +20,16 @@ const VimrcContainer = styled.div`
   font-family: monospace;
   font-size: 16px;
 
+  /* border on all edges but bottom */
   border: 1px solid black;
+  border-bottom: 0;
+
   /* juicy green */
   background-color: #BBEB64;
 
   box-shadow: 0px 4px 4px rgba(0,0,0,.3);
-  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   overflow-y: auto;
   max-height: 60vh;
   min-height: 40px;
@@ -41,12 +45,13 @@ const IconWrapperButton = styled.button`
   border-radius: 5px;
   width: 100%;
   border: 0px;
-  border-top: 1px solid black;
+  border: 1px solid black;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
   padding: 4px 8px;
   cursor: pointer;
   transition: box-shadow 300ms ease;
+  transition: background-color 500ms ease;
 
   display: flex;
   justify-content: center;
@@ -103,25 +108,28 @@ class RightHalf extends React.Component {
           <FileContent>
             {textContentArr.map(([text, comment], i) => (<div key={i}>{text} <Comment>" {comment}</Comment></div>))}
           </FileContent>
-
-          <CopyToClipboard
-            text={textContentArr.reduce((acc, [command, comment]) => `${acc}\n${command} " ${comment}`, initialVimrcContent)}
-            onCopy={this.handleCopyClick}>
-            <IconWrapperButton style={{
-              backgroundColor: copyClicked ? 'black' : '#fff5f5'
-            }}>
-              <CopyText style={{
-                color: copyClicked ? '#fff5f5' : 'black'
-              }}>{copyButtonText}</CopyText>
-              <img
-                alt="right arrow"
-                src={arrowRightIconPath}
-                height="26px"
-                style={{marginLeft: '10px'}}/>
-              <img alt="clipboard" src={clipboadIconPath} height="26px" />
-            </IconWrapperButton>
-          </CopyToClipboard>
         </VimrcContainer>
+        <CopyToClipboard
+          text={textContentArr.reduce((acc, [command, comment]) => `${acc}\n${command} " ${comment}`, initialVimrcContent)}
+          onCopy={this.handleCopyClick}>
+          <IconWrapperButton style={{
+            backgroundColor: copyClicked ? 'black' : '#fff5f5'
+          }}>
+            <CopyText style={{
+              color: copyClicked ? '#fff5f5' : 'black'
+            }}>{copyButtonText}</CopyText>
+            {!this.state.copyClicked && (
+              <div>
+                <img
+                  alt="right arrow"
+                  src={arrowRightIconPath}
+                  height="26px"
+                  style={{marginLeft: '10px'}}/>
+                <img alt="clipboard" src={clipboadIconPath} height="26px" />
+              </div>
+            )}
+          </IconWrapperButton>
+        </CopyToClipboard>
       </RightHalfWrapper>
     );
   }
