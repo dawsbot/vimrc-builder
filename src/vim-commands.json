@@ -99,6 +99,25 @@
   {
     "command": "set numberwidth=3",
     "description": "Sets width of the 'gutter' column used for numbering to 3 (default 4)"
+  },
+  {
+    "command": "set clipboard=unnamed",
+    "description": "No end-of-line character"
+  },
+  {
+    "command": "set noendofline",
+    "description": "Use the OS clipboard by default"
+  },
+  {
+    "command": "set noerrorbells",
+    "description": "Disable error bells"
+  },
+  {
+    "command": "set shiftround",
+    "description": "Shift to the next round tab stop. Aka When at 3 spaces, hit >> to go to 4, not 5."
+  },
+  {
+    "command": "set cursorline",
+    "description": "Highlight current line"
   }
 ]
-
