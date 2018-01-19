@@ -102,22 +102,14 @@
   },
   {
     "command": "set clipboard=unnamed",
-    "description": "No end-of-line character"
-  },
-  {
-    "command": "set noendofline",
     "description": "Use the OS clipboard by default"
   },
   {
-    "command": "set noerrorbells",
-    "description": "Disable error bells"
+    "command": "set noendofline",
+    "description": "No end-of-line character"
   },
   {
     "command": "set shiftround",
-    "description": "Shift to the next round tab stop. Aka When at 3 spaces, hit >> to go to 4, not 5."
-  },
-  {
-    "command": "set cursorline",
-    "description": "Highlight current line"
+    "description": "Shift to the next round tab stop. Aka When at 3 spaces, hit >> to go to 4, not 5 if your shiftwidth is set to 2."
   }
 ]
