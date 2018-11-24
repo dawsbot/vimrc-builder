@@ -13,7 +13,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "now && now alias set $(pbpaste) vimrc-builder.now.sh"
   },
   "engines": {
     "node": ">=10.7.0"
