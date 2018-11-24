@@ -12,10 +12,6 @@
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT Licensed" />
   </a>
 
-  <a href="https://travis-ci.org/dawsbot/vimrc-builder">
-    <img src="https://travis-ci.org/dawsbot/vimrc-builder.svg?branch=master" />
-  </a>
-
   <br/>
 </p>
 
