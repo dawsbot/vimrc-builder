@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 
@@ -6,6 +7,8 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 import SectionHeader from './SectionHeader';
 import clipboadIconPath from '../ionicons/clipboard.svg';
 import arrowRightIconPath from '../ionicons/arrow-right-a.svg';
+
+import type {TNewText} from '../App';
 
 const RightHalfWrapper = styled.div`
   margin-right: 30px;
@@ -71,7 +74,15 @@ const Comment = styled.span`
   color: grey;
 `;
 
-class RightHalf extends React.Component {
+type TProps = {|
+  +textContentArr: Array<TNewText>
+|}
+
+type TState = {|
+  +copyClicked: boolean
+|}
+
+class RightHalf extends React.Component<TProps, TState> {
   constructor() {
     super();
     this.state = {
@@ -90,6 +101,12 @@ class RightHalf extends React.Component {
     });
   }
 
+  // what shows on the right side of the page
+  buildViewableTextContent = ([text, comment]:TNewText, i: number) => (<div key={i}>{text} <Comment>" {comment}</Comment></div>)
+
+  // what is actually placed on the clipboard
+  buildCopyableTextContent = (acc:string, [command, comment]: TNewText) => `${acc}\n${command} " ${comment}`;
+
   render() {
     const {textContentArr} = this.props;
     const {copyClicked} = this.state;
@@ -106,11 +123,11 @@ class RightHalf extends React.Component {
         <VimrcContainer>
           {/* vimrc file content */}
           <FileContent>
-            {textContentArr.map(([text, comment], i) => (<div key={i}>{text} <Comment>" {comment}</Comment></div>))}
+            {textContentArr.map(this.buildViewableTextContent)}
           </FileContent>
         </VimrcContainer>
         <CopyToClipboard
-          text={textContentArr.reduce((acc, [command, comment]) => `${acc}\n${command} " ${comment}`, initialVimrcContent)}
+          text={textContentArr.reduce(this.buildCopyableTextContent, initialVimrcContent)}
           onCopy={this.handleCopyClick}>
           <IconWrapperButton style={{
             backgroundColor: copyClicked ? 'black' : '#fff5f5'
