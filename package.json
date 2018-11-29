@@ -12,7 +12,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "flow && react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy": "now && now alias set $(pbpaste) vimrc-builder.now.sh"
   },

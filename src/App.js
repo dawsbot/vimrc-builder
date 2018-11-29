@@ -24,12 +24,12 @@ const AppWrapper = styled.div`
 `;
 
 // a tuple where element 0 is a command, and 1 is it's comment
-type TNewText = [string, string]
-type TState = {
-  vimrcTextContent: Array<TNewText>
-}
+export type TNewText = [string, string]
+type TState = {|
+  +vimrcTextContent: Array<TNewText>
+|}
 
-class App extends Component<{}, TState> {
+class App extends Component<null, TState> {
   constructor() {
     super();
     this.state = {
