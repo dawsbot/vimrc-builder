@@ -90,6 +90,12 @@ class RightHalf extends React.Component {
     });
   }
 
+  // what shows on the right side of the page
+  buildViewableTextContent = ([text, comment], i) => (<div key={i}>{text} <Comment>" {comment}</Comment></div>)
+
+  // what is actually placed on the clipboard
+  buildCopyableTextContent = (acc, [command, comment]) => `${acc}\n${command} " ${comment}`;
+
   render() {
     const {textContentArr} = this.props;
     const {copyClicked} = this.state;
@@ -106,11 +112,11 @@ class RightHalf extends React.Component {
         <VimrcContainer>
           {/* vimrc file content */}
           <FileContent>
-            {textContentArr.map(([text, comment], i) => (<div key={i}>{text} <Comment>" {comment}</Comment></div>))}
+            {textContentArr.map(this.buildViewableTextContent)}
           </FileContent>
         </VimrcContainer>
         <CopyToClipboard
-          text={textContentArr.reduce((acc, [command, comment]) => `${acc}\n${command} " ${comment}`, initialVimrcContent)}
+          text={textContentArr.reduce(this.buildCopyableTextContent, initialVimrcContent)}
           onCopy={this.handleCopyClick}>
           <IconWrapperButton style={{
             backgroundColor: copyClicked ? 'black' : '#fff5f5'
