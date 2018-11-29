@@ -1,9 +1,12 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 
 import SearchResult from './SearchResult';
 import vimCommands from '../vim-commands.json';
 import SectionHeader from './SectionHeader';
+
+import type {TNewText} from '../App';
 
 const LeftHalfWrapper = styled.div`
   min-width: 40%;
@@ -39,7 +42,20 @@ const SearchResultsContainer = styled.div`
   min-height: 40px;
 `;
 
-class LeftHalf extends React.Component {
+type TProps = {|
+  onAppendVimrcContent: (TNewText) => void
+|}
+
+type TState = {
+  +[index: string]: {|
+    +active: boolean,
+    +visible: boolean,
+    +command: string,
+    +description: string,
+  |}
+}
+
+class LeftHalf extends React.Component<TProps, TState> {
 
   constructor() {
     super();
@@ -57,25 +73,25 @@ class LeftHalf extends React.Component {
   }
 
   // reverse active state
-  handleSearchResultClick(i) {
-    const isActive = this.state[i].active;
+  handleSearchResultClick(i: number) {
+    const isActive = this.state[i.toString()].active;
     // only append text on enable
     if (!isActive) {
-      this.props.onAppendVimrcContent([this.state[i].command, this.state[i].description]);
+      this.props.onAppendVimrcContent([this.state[i.toString()].command, this.state[i.toString()].description]);
     }
 
     // highlight in green
     this.setState({
       [i]: {
-        ...this.state[i],
-        active: !this.state[i].active,
+        ...this.state[i.toString()],
+        active: !this.state[i.toString()].active,
       }
     });
 
   }
 
   // filter out and stop showing search results that do not match
-  handleSearchInput = (e) => {
+  handleSearchInput = (e:SyntheticInputEvent<HTMLInputElement>) => {
     const searchText = e.target.value;
     Object.keys(this.state).forEach((i) => {
       if (

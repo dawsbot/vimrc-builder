@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
@@ -22,7 +23,13 @@ const AppWrapper = styled.div`
   }
 `;
 
-class App extends Component {
+// a tuple where element 0 is a command, and 1 is it's comment
+export type TNewText = [string, string]
+type TState = {|
+  +vimrcTextContent: Array<TNewText>
+|}
+
+class App extends Component<null, TState> {
   constructor() {
     super();
     this.state = {
@@ -32,7 +39,7 @@ class App extends Component {
   }
 
   // newText is an array where the first element is command and second is comment
-  appendVimrcContent = (newText) => {
+  appendVimrcContent = (newText: TNewText) => {
     this.setState({
       vimrcTextContent: [...this.state.vimrcTextContent, newText]
     });

@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 
@@ -26,7 +27,14 @@ const Description = styled.summary`
   margin: 0px;
 `;
 
-const SearchResult = (props) => (
+type TProps = {|
+  +active: boolean,
+  +onClick: Function,
+  +command: string,
+  +description: string,
+|}
+
+const SearchResult = (props:TProps) => (
   <ResultRow
     style={{
       backgroundColor: props.active && '#1f0200',
