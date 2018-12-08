@@ -14,7 +14,7 @@
     "build": "react-scripts build",
     "test": "flow && react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "now && now alias set $(pbpaste) vimrc-builder.now.sh"
+    "deploy": "npx now && npx now alias set $(pbpaste) vimrc-builder.now.sh"
   },
   "engines": {
     "node": "10"

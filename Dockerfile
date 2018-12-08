@@ -12,6 +12,7 @@ RUN yarn install
 COPY . .
 
 # Run tests
+# https://github.com/facebook/flow/issues/3649
 RUN CI=true yarn test
 
 # Build the app and move the resulting build to the `/public` directory
