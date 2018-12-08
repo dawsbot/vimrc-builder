@@ -125,7 +125,6 @@ class RightHalf extends React.Component<TProps, TState> {
         copyableText += `\n${command} " ${vimCommands[command].description}`;
       }
     });
-    console.log('copied: \n' + copyableText);
     return copyableText;
   };
 
