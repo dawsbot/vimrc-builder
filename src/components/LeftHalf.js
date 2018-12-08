@@ -3,10 +3,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import SearchResult from './SearchResult';
-import vimCommands from '../vim-commands.json';
 import SectionHeader from './SectionHeader';
 
-import type {TNewText} from '../App';
+import type { TVimCommands } from '../App';
 
 const LeftHalfWrapper = styled.div`
   min-width: 40%;
@@ -32,10 +31,9 @@ const SearchResultsContainer = styled.div`
   padding: 4px 16px;
   border: 1px solid black;
   /* juicy green */
-  background-color: #BBEB64;
+  background-color: #bbeb64;
 
-
-  box-shadow: 0px 6px 6px rgba(0,0,0,.4);
+  box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.4);
   border-radius: 5px;
   overflow-y: auto;
   max-height: 60vh;
@@ -43,111 +41,56 @@ const SearchResultsContainer = styled.div`
 `;
 
 type TProps = {|
-  onAppendVimrcContent: (TNewText) => void
-|}
+  // onAppendVimrcContent: (TNewText) => void,
+  +vimCommands: TVimCommands,
+  +handleRowClick: (commandName: string) => void
+|};
 
-type TState = {
-  +[index: string]: {|
-    +active: boolean,
-    +visible: boolean,
-    +command: string,
-    +description: string,
-  |}
-}
+type TState = {|
+  +searchText: string
+|};
 
 class LeftHalf extends React.Component<TProps, TState> {
-
-  constructor() {
-    super();
-    const newState = {};
-    // keys are the index, values are an object with 4 fields:
-    // active, visible, command, and description
-    vimCommands.forEach((_, i) => {
-      newState[i] = {
-        active: false,
-        visible: true,
-        ...vimCommands[i],
-      }
-    });
-    this.state = newState;
-  }
-
-  // reverse active state
-  handleSearchResultClick(i: number) {
-    const isActive = this.state[i.toString()].active;
-    // only append text on enable
-    if (!isActive) {
-      this.props.onAppendVimrcContent([this.state[i.toString()].command, this.state[i.toString()].description]);
-    }
-
-    // highlight in green
-    this.setState({
-      [i]: {
-        ...this.state[i.toString()],
-        active: !this.state[i.toString()].active,
-      }
-    });
-
-  }
+  state = {
+    searchText: ''
+  };
 
   // filter out and stop showing search results that do not match
-  handleSearchInput = (e:SyntheticInputEvent<HTMLInputElement>) => {
+  handleSearchInput = (e: SyntheticInputEvent<HTMLInputElement>) => {
     const searchText = e.target.value;
-    Object.keys(this.state).forEach((i) => {
-      if (
-        this.state[i].command.includes(searchText) ||
-        this.state[i].description.includes(searchText)
-      ) {
-        this.setState({
-          [i]: {
-            ...this.state[i],
-            visible: true,
-          }
-        });
-      } else {
-        this.setState({
-          [i]: {
-            ...this.state[i],
-            visible: false,
-          }
-        });
-      }
-    })
-  }
+    this.setState({
+      searchText: searchText.toLowerCase()
+    });
+  };
 
-  render() {
-    const SearchResults = vimCommands.map((command, i) => {
-      // only return those marked as visible
-      if (this.state[i].visible) {
-        return (
+  buildRows = () => {
+    const { vimCommands } = this.props;
+    return Object.keys(vimCommands).reduce((acc, commandName: string) => {
+      if (commandName.toLowerCase().includes(this.state.searchText)) {
+        acc.push(
           <SearchResult
-            {...command}
-            active={this.state[i].active}
-            onClick={() => this.handleSearchResultClick(i)}
-            key={i}
+            active={vimCommands[commandName].active}
+            onClick={() => this.props.handleRowClick(commandName)}
+            command={commandName}
+            description={vimCommands[commandName].description}
+            key={commandName}
           />
         );
       }
-      return null;
-    });
+      return acc;
+    }, []);
+  };
 
+  render() {
     return (
       <LeftHalfWrapper>
-        <SectionHeader>
-          Select Features Here
-        </SectionHeader>
+        <SectionHeader>Select Features Here</SectionHeader>
 
-        <SearchInput
-          placeholder="Search"
-          onChange={this.handleSearchInput}
-          />
-        <SearchResultsContainer>
-          {SearchResults}
-        </SearchResultsContainer>
+        <SearchInput placeholder="Search" onChange={this.handleSearchInput} />
+        <SearchResultsContainer>{this.buildRows()}</SearchResultsContainer>
       </LeftHalfWrapper>
     );
   }
-
 }
 
 export default LeftHalf;

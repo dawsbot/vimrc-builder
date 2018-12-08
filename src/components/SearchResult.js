@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ResultRow = styled.div`
-
   margin: 8px 0px;
   padding: 10px 20px;
   /* near-black pink */
@@ -19,9 +18,9 @@ const ResultRow = styled.div`
   background-color: #fff5f5;
 
   :hover {
-    box-shadow: 0px 4px 4px rgba(0,0,0,.3);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
   }
-`
+`;
 const Description = styled.summary`
   font-size: 14px;
   margin: 0px;
@@ -31,24 +30,22 @@ type TProps = {|
   +active: boolean,
   +onClick: Function,
   +command: string,
-  +description: string,
-|}
+  +description: string
+|};
 
-const SearchResult = (props:TProps) => (
+const SearchResult = (props: TProps) => (
   <ResultRow
     style={{
       backgroundColor: props.active && '#1f0200',
       color: props.active ? '#fff5f5' : '#1f0200',
       boxShadow: props.active && '0px 4px 4px rgba(0,0,0,.3)'
     }}
-    onClick={props.onClick}>
-
+    onClick={props.onClick}
+  >
     <div>
       <strong>{props.command}</strong>
-      <br/>
-      <Description>
-        {props.description}
-      </Description>
+      <br />
+      <Description>{props.description}</Description>
     </div>
   </ResultRow>
 );
