@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import vimCommands from './vim-commands.json'
 import LeftHalf from './components/LeftHalf';
 import RightHalf from './components/RightHalf';
 import StaticPageContent from './components/StaticPageContent';
@@ -30,13 +31,10 @@ type TState = {|
 |}
 
 class App extends Component<null, TState> {
-  constructor() {
-    super();
-    this.state = {
+    state = {
       // 2d array. elem 0 is command, 1 is comment
       vimrcTextContent: []
     };
-  }
 
   // newText is an array where the first element is command and second is comment
   appendVimrcContent = (newText: TNewText) => {
@@ -50,7 +48,9 @@ class App extends Component<null, TState> {
       <div>
         <AppWrapper>
           <LeftHalf
-            onAppendVimrcContent={this.appendVimrcContent}/>
+            onAppendVimrcContent={this.appendVimrcContent}
+            vimCommands={vimCommands}
+           />
           <RightHalf textContentArr={this.state.vimrcTextContent}/>
         </AppWrapper>
         <StaticPageContent/>

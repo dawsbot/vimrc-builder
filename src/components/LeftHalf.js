@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import SearchResult from './SearchResult';
-import vimCommands from '../vim-commands.json';
 import SectionHeader from './SectionHeader';
 
 import type {TNewText} from '../App';
@@ -43,7 +42,8 @@ const SearchResultsContainer = styled.div`
 `;
 
 type TProps = {|
-  onAppendVimrcContent: (TNewText) => void
+  onAppendVimrcContent: (TNewText) => void,
+  vimCommands: Object,
 |}
 
 type TState = {
@@ -57,11 +57,12 @@ type TState = {
 
 class LeftHalf extends React.Component<TProps, TState> {
 
-  constructor() {
+  constructor(props:TProps) {
     super();
     const newState = {};
     // keys are the index, values are an object with 4 fields:
     // active, visible, command, and description
+    const {vimCommands} = props;
     vimCommands.forEach((_, i) => {
       newState[i] = {
         active: false,
@@ -116,7 +117,7 @@ class LeftHalf extends React.Component<TProps, TState> {
   }
 
   render() {
-    const SearchResults = vimCommands.map((command, i) => {
+    const SearchResults = this.props.vimCommands.map((command, i) => {
       // only return those marked as visible
       if (this.state[i].visible) {
         return (
