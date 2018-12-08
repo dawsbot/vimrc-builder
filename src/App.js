@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import vimCommands from './vim-commands.json';
 import LeftHalf from './components/LeftHalf';
 import RightHalf from './components/RightHalf';
 import StaticPageContent from './components/StaticPageContent';
@@ -11,9 +12,17 @@ const AppWrapper = styled.div`
   display: flex;
 
   /* background gradient with fallback */
-  background: #fd746c;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #ff9068, #fd746c);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #ff9068, #fd746c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #fd746c; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ff9068,
+    #fd746c
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ff9068,
+    #fd746c
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   /* desktop first css */
   flex-direction: row;
@@ -23,26 +32,47 @@ const AppWrapper = styled.div`
   }
 `;
 
-// a tuple where element 0 is a command, and 1 is it's comment
-export type TNewText = [string, string]
+export type TVimCommands = {
+  [command: string]: {|
+    +description: string,
+    +active: boolean
+  |}
+};
+
 type TState = {|
-  +vimrcTextContent: Array<TNewText>
-|}
+  +commands: TVimCommands
+|};
 
 class App extends Component<null, TState> {
   constructor() {
     super();
+    const commands: TVimCommands = Object.keys(vimCommands).reduce(
+      (acc, commandName) => {
+        acc[commandName] = {
+          ...vimCommands[commandName],
+          active: false
+        };
+        return acc;
+      },
+      {}
+    );
+
     this.state = {
-      // 2d array. elem 0 is command, 1 is comment
-      vimrcTextContent: []
+      commands
     };
   }
 
-  // newText is an array where the first element is command and second is comment
-  appendVimrcContent = (newText: TNewText) => {
-    this.setState({
-      vimrcTextContent: [...this.state.vimrcTextContent, newText]
-    });
+  handleRowClick = (command: string) => {
+    const newState: TState = {
+      commands: {
+        ...this.state.commands,
+        [command]: {
+          ...this.state.commands[command],
+          active: !this.state.commands[command].active
+        }
+      }
+    };
+    this.setState(newState);
   };
 
   render() {
@@ -50,10 +80,12 @@ class App extends Component<null, TState> {
       <div>
         <AppWrapper>
           <LeftHalf
-            onAppendVimrcContent={this.appendVimrcContent}/>
-          <RightHalf textContentArr={this.state.vimrcTextContent}/>
+            vimCommands={this.state.commands}
+            handleRowClick={this.handleRowClick}
+          />
+          <RightHalf vimCommands={this.state.commands} />
         </AppWrapper>
-        <StaticPageContent/>
+        <StaticPageContent />
       </div>
     );
   }
