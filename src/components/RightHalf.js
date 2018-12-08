@@ -2,13 +2,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import SectionHeader from './SectionHeader';
 import clipboadIconPath from '../ionicons/clipboard.svg';
 import arrowRightIconPath from '../ionicons/arrow-right-a.svg';
 
-import type {TVimCommands} from '../App';
+import type { TVimCommands } from '../App';
 
 const RightHalfWrapper = styled.div`
   margin-right: 30px;
@@ -28,9 +28,9 @@ const VimrcContainer = styled.div`
   border-bottom: 0;
 
   /* juicy green */
-  background-color: #BBEB64;
+  background-color: #bbeb64;
 
-  box-shadow: 0px 4px 4px rgba(0,0,0,.3);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   overflow-y: auto;
@@ -60,14 +60,13 @@ const IconWrapperButton = styled.button`
   justify-content: center;
 
   :hover {
-    box-shadow: 0px 4px 4px rgba(0,0,0,.3);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
   }
 `;
 
 const FileContent = styled.div`
   padding: 30px 20px;
   min-height: 70px;
-
 `;
 
 const Comment = styled.span`
@@ -75,90 +74,98 @@ const Comment = styled.span`
 `;
 
 type TProps = {|
-  +vimCommands: TVimCommands,
-|}
+  +vimCommands: TVimCommands
+|};
 
 type TState = {|
   +copyClicked: boolean
-|}
+|};
 
 class RightHalf extends React.Component<TProps, TState> {
-
   constructor() {
     super();
     this.state = {
       copyClicked: false
-    }
+    };
   }
 
   handleCopyClick = () => {
     this.setState({
-      copyClicked: true,
+      copyClicked: true
     });
-  }
+  };
   componentWillReceiveProps = () => {
     this.setState({
-      copyClicked: false,
+      copyClicked: false
     });
-  }
+  };
 
-  buildViewableTextContent = ():Array<any> => {
-    const {vimCommands} = this.props;
-    let viewableText = []
+  buildViewableTextContent = (): Array<any> => {
+    const { vimCommands } = this.props;
+    let viewableText = [];
     Object.keys(vimCommands).map(command => {
       if (vimCommands[command].active) {
-        viewableText.push(<div key={command}>{command} <Comment>" {vimCommands[command].description}</Comment></div>)
+        viewableText.push(
+          <div key={command}>
+            {command} <Comment>" {vimCommands[command].description}</Comment>
+          </div>
+        );
       }
-    })
+    });
     return viewableText;
-  }
+  };
 
   // what is actually placed on the clipboard
-  buildCopyableTextContent = ():string => {
-    const {vimCommands} = this.props;
-    let copyableText = '" >_ Customizations for the vim editor. Read more at https://github.com/dawsbot/vimrc-builder\n';
+  buildCopyableTextContent = (): string => {
+    const { vimCommands } = this.props;
+    let copyableText =
+      '" >_ Customizations for the vim editor. Read more at https://github.com/dawsbot/vimrc-builder\n';
     Object.keys(vimCommands).map(command => {
       if (vimCommands[command].active) {
         copyableText += `\n${command} " ${vimCommands[command].description}`;
       }
-    })
-    console.log('copied: \n' + copyableText)
+    });
+    console.log('copied: \n' + copyableText);
     return copyableText;
-  }
+  };
 
   render() {
-    const {copyClicked} = this.state;
-    const copyButtonText = copyClicked ?
-      'Paste and enjoy!' :
-      'Copy to clipboard';
+    const { copyClicked } = this.state;
+    const copyButtonText = copyClicked
+      ? 'Paste and enjoy!'
+      : 'Copy to clipboard';
 
     return (
       <RightHalfWrapper>
-        <SectionHeader>
-          Copy .vimrc from here
-        </SectionHeader>
+        <SectionHeader>Copy .vimrc from here</SectionHeader>
         <VimrcContainer>
           {/* vimrc file content */}
-          <FileContent>
-            {this.buildViewableTextContent()}
-          </FileContent>
+          <FileContent>{this.buildViewableTextContent()}</FileContent>
         </VimrcContainer>
         <CopyToClipboard
           text={this.buildCopyableTextContent()}
-          onCopy={this.handleCopyClick}>
-          <IconWrapperButton style={{
-            backgroundColor: copyClicked ? 'black' : '#fff5f5'
-          }}>
-            <CopyText style={{
-              color: copyClicked ? '#fff5f5' : 'black'
-            }}>{copyButtonText}</CopyText>
+          onCopy={this.handleCopyClick}
+        >
+          <IconWrapperButton
+            style={{
+              backgroundColor: copyClicked ? 'black' : '#fff5f5'
+            }}
+          >
+            <CopyText
+              style={{
+                color: copyClicked ? '#fff5f5' : 'black'
+              }}
+            >
+              {copyButtonText}
+            </CopyText>
             {!this.state.copyClicked && (
               <div>
                 <img
                   alt="right arrow"
                   src={arrowRightIconPath}
                   height="26px"
-                  style={{marginLeft: '10px'}}/>
+                  style={{ marginLeft: '10px' }}
+                />
                 <img alt="clipboard" src={clipboadIconPath} height="26px" />
               </div>
             )}

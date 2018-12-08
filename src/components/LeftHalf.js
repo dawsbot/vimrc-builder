@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import SearchResult from './SearchResult';
 import SectionHeader from './SectionHeader';
 
-import type {TVimCommands} from '../App';
+import type { TVimCommands } from '../App';
 
 const LeftHalfWrapper = styled.div`
   min-width: 40%;
@@ -31,10 +31,9 @@ const SearchResultsContainer = styled.div`
   padding: 4px 16px;
   border: 1px solid black;
   /* juicy green */
-  background-color: #BBEB64;
+  background-color: #bbeb64;
 
-
-  box-shadow: 0px 6px 6px rgba(0,0,0,.4);
+  box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.4);
   border-radius: 5px;
   overflow-y: auto;
   max-height: 60vh;
@@ -45,29 +44,28 @@ type TProps = {|
   // onAppendVimrcContent: (TNewText) => void,
   +vimCommands: TVimCommands,
   +handleRowClick: (commandName: string) => void
-|}
+|};
 
 type TState = {|
-  +searchText: string,
-|}
+  +searchText: string
+|};
 
 class LeftHalf extends React.Component<TProps, TState> {
-
   state = {
     searchText: ''
-  }
+  };
 
   // filter out and stop showing search results that do not match
-  handleSearchInput = (e:SyntheticInputEvent<HTMLInputElement>) => {
+  handleSearchInput = (e: SyntheticInputEvent<HTMLInputElement>) => {
     const searchText = e.target.value;
     this.setState({
-      searchText: searchText.toLowerCase(),
-    })
-  }
+      searchText: searchText.toLowerCase()
+    });
+  };
 
   buildRows = () => {
-    const {vimCommands} = this.props;
-    return Object.keys(vimCommands).reduce((acc, commandName:string) => {
+    const { vimCommands } = this.props;
+    return Object.keys(vimCommands).reduce((acc, commandName: string) => {
       if (commandName.toLowerCase().includes(this.state.searchText)) {
         acc.push(
           <SearchResult
@@ -76,31 +74,23 @@ class LeftHalf extends React.Component<TProps, TState> {
             command={commandName}
             description={vimCommands[commandName].description}
             key={commandName}
-            />
-        )
+          />
+        );
       }
       return acc;
-    }, [])
-  }
+    }, []);
+  };
 
   render() {
     return (
       <LeftHalfWrapper>
-        <SectionHeader>
-          Select Features Here
-        </SectionHeader>
+        <SectionHeader>Select Features Here</SectionHeader>
 
-        <SearchInput
-          placeholder="Search"
-          onChange={this.handleSearchInput}
-          />
-        <SearchResultsContainer>
-          {this.buildRows()}
-        </SearchResultsContainer>
+        <SearchInput placeholder="Search" onChange={this.handleSearchInput} />
+        <SearchResultsContainer>{this.buildRows()}</SearchResultsContainer>
       </LeftHalfWrapper>
     );
   }
-
 }
 
 export default LeftHalf;
