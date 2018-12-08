@@ -1,115 +1,86 @@
-[
-  {
-    "command": "set number",
+{
+  "set number": {
     "description": "Show absolute line numbers on the left."
   },
-  {
-    "command": "set relativenumber",
+  "set relativenumber": {
     "description": "Show relative line numbers on the left. These change based upon where your cursor is."
   },
-  {
-    "command": "syntax on",
+  "syntax on": {
     "description": "Turns syntax highlighting on"
   },
-  {
-    "command": "set ai",
+  "set ai": {
     "description": "Sets auto-indentation"
   },
-  {
-    "command": "set si",
+  "set si": {
     "description": "Sets smart-indentation"
   },
-  {
-    "command": "set noswapfile",
+  "set noswapfile": {
     "description": "Prevent vim from creating .swp files"
   },
-  {
-    "command": "set cursorline",
+  "set cursorline": {
     "description": "Highlight current cursor line"
   },
-  {
-    "command": "set cursorcolumn",
+  "set cursorcolumn": {
     "description": "Highlight current cursor column"
   },
-  {
-    "command": "set tabstop=2",
+  "set tabstop=2": {
     "description": "One tab should equal 2 spaces (default 4)"
   },
-  {
-    "command": "set shiftwidth=2",
+  "set shiftwidth=2": {
     "description": "Arrow function (>>) also indents 2 spaces"
   },
-  {
-    "command": "set expandtab",
+  "set expandtab": {
     "description": "One tab should be comprised of spaces(\" \") instead of one tab (\"\\t\")"
   },
-  {
-    "command": "set smarttab",
+  "set smarttab": {
     "description": "Be smart when using tabs"
   },
-  {
-    "command": "set wrap",
+  "set wrap": {
     "description": "wrap lines"
   },
-  {
-    "command": "set hlsearch",
+  "set hlsearch": {
     "description": "Highlights matches to search"
   },
-  {
-    "command": "set incsearch",
+  "set incsearch": {
     "description": "Display search results as you type (instead of only upon ENTER)"
   },
-  {
-    "command": "set ignorecase",
+  "set ignorecase": {
     "description": "Ignore case when searching"
   },
-  {
-    "command": "set smartcase",
+  "set smartcase": {
     "description": "Be smart about case when searching"
   },
-  {
-    "command": "set cmdheight=2",
+  "set cmdheight=2": {
     "description": "Set height of the command bar to 2"
   },
-  {
-    "command": "set ttyfast",
+  "set ttyfast": {
     "description": "Boost speed by altering character redraw rates to your terminal"
   },
-
-  {
-    "command": "set showmatch",
+  "set showmatch": {
     "description": "Show matching brackets when text indicator is over them"
   },
-  {
-    "command": "set noerrorbell",
+  "set noerrorbell": {
     "description": "Silence the error bell"
   },
-  {
-    "command": "set novisualbells",
+  "set novisualbells": {
     "description": "Visually hide the error bell"
   },
-  {
-    "command": "set foldcolumn=1",
+  "set foldcolumn=1": {
     "description": "Place a width 1 margin on the left"
   },
-  {
-    "command": "set encoding=utf8",
+  "set encoding=utf8": {
     "description": "Set utf8 as encoding & en_US as language"
   },
-  {
-    "command": "set numberwidth=3",
+  "set numberwidth=3": {
     "description": "Sets width of the 'gutter' column used for numbering to 3 (default 4)"
   },
-  {
-    "command": "set clipboard=unnamed",
+  "set clipboard=unnamed": {
     "description": "Use the OS clipboard by default"
   },
-  {
-    "command": "set noendofline",
+  "set noendofline": {
     "description": "No end-of-line character"
   },
-  {
-    "command": "set shiftround",
+  "set shiftround": {
     "description": "Shift to the next round tab stop. Aka When at 3 spaces, hit >> to go to 4, not 5 if your shiftwidth is set to 2."
   }
-]
+}

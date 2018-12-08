@@ -24,34 +24,56 @@ const AppWrapper = styled.div`
   }
 `;
 
-// a tuple where element 0 is a command, and 1 is it's comment
-export type TNewText = [string, string]
+export type TVimCommands =
+{
+  [command:string]:  {|
+    +description: string,
+    +active: boolean,
+  |}
+}
+
 type TState = {|
-  +vimrcTextContent: Array<TNewText>
-|}
++commands: TVimCommands
+  |}
 
 class App extends Component<null, TState> {
-    state = {
-      // 2d array. elem 0 is command, 1 is comment
-      vimrcTextContent: []
-    };
+  constructor() {
+    super();
+    const commands:TVimCommands = Object.keys(vimCommands).reduce((acc, commandName) => {
+      acc[commandName] = {
+        ...vimCommands[commandName],
+        active: false,
+      }
+      return acc;
+    }, {})
 
-  // newText is an array where the first element is command and second is comment
-  appendVimrcContent = (newText: TNewText) => {
-    this.setState({
-      vimrcTextContent: [...this.state.vimrcTextContent, newText]
-    });
-  };
+    this.state = {
+      commands,
+    }
+  }
+
+  handleRowClick = (command:string) => {
+    const newState:TState = {
+      commands: {
+        ...this.state.commands,
+        [command]: {
+          ...this.state.commands[command],
+          active: !this.state.commands[command].active
+        }
+      }
+    }
+    this.setState(newState)
+  }
 
   render() {
     return (
       <div>
         <AppWrapper>
           <LeftHalf
-            onAppendVimrcContent={this.appendVimrcContent}
-            vimCommands={vimCommands}
+            vimCommands={this.state.commands}
+            handleRowClick={this.handleRowClick}
            />
-          <RightHalf textContentArr={this.state.vimrcTextContent}/>
+          <RightHalf vimCommands={this.state.commands}/>
         </AppWrapper>
         <StaticPageContent/>
       </div>

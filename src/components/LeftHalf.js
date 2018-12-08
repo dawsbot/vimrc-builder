@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import SearchResult from './SearchResult';
 import SectionHeader from './SectionHeader';
 
-import type {TNewText} from '../App';
+import type {TVimCommands} from '../App';
 
 const LeftHalfWrapper = styled.div`
   min-width: 40%;
@@ -42,96 +42,48 @@ const SearchResultsContainer = styled.div`
 `;
 
 type TProps = {|
-  onAppendVimrcContent: (TNewText) => void,
-  vimCommands: Object,
+  // onAppendVimrcContent: (TNewText) => void,
+  +vimCommands: TVimCommands,
+  +handleRowClick: (commandName: string) => void
 |}
 
-type TState = {
-  +[index: string]: {|
-    +active: boolean,
-    +visible: boolean,
-    +command: string,
-    +description: string,
-  |}
-}
+type TState = {|
+  +searchText: string,
+|}
 
 class LeftHalf extends React.Component<TProps, TState> {
 
-  constructor(props:TProps) {
-    super();
-    const newState = {};
-    // keys are the index, values are an object with 4 fields:
-    // active, visible, command, and description
-    const {vimCommands} = props;
-    vimCommands.forEach((_, i) => {
-      newState[i] = {
-        active: false,
-        visible: true,
-        ...vimCommands[i],
-      }
-    });
-    this.state = newState;
-  }
-
-  // reverse active state
-  handleSearchResultClick(i: number) {
-    const isActive = this.state[i.toString()].active;
-    // only append text on enable
-    if (!isActive) {
-      this.props.onAppendVimrcContent([this.state[i.toString()].command, this.state[i.toString()].description]);
-    }
-
-    // highlight in green
-    this.setState({
-      [i]: {
-        ...this.state[i.toString()],
-        active: !this.state[i.toString()].active,
-      }
-    });
-
+  state = {
+    searchText: ''
   }
 
   // filter out and stop showing search results that do not match
   handleSearchInput = (e:SyntheticInputEvent<HTMLInputElement>) => {
     const searchText = e.target.value;
-    Object.keys(this.state).forEach((i) => {
-      if (
-        this.state[i].command.includes(searchText) ||
-        this.state[i].description.includes(searchText)
-      ) {
-        this.setState({
-          [i]: {
-            ...this.state[i],
-            visible: true,
-          }
-        });
-      } else {
-        this.setState({
-          [i]: {
-            ...this.state[i],
-            visible: false,
-          }
-        });
-      }
+    this.setState({
+      searchText: searchText.toLowerCase(),
     })
   }
 
-  render() {
-    const SearchResults = this.props.vimCommands.map((command, i) => {
-      // only return those marked as visible
-      if (this.state[i].visible) {
-        return (
+  buildRows = () => {
+    const {vimCommands} = this.props;
+    return Object.keys(vimCommands).reduce((acc, commandName:string) => {
+      if (commandName.toLowerCase().includes(this.state.searchText)) {
+        acc.push(
           <SearchResult
-            {...command}
-            active={this.state[i].active}
-            onClick={() => this.handleSearchResultClick(i)}
-            key={i}
-          />
-        );
+            active={vimCommands[commandName].active}
+            onClick={() => this.props.handleRowClick(commandName)}
+            command={commandName}
+            description={vimCommands[commandName].description}
+            key={commandName}
+            />
+        )
       }
-      return null;
-    });
+      return acc;
+    }, [])
+  }
 
+  render() {
     return (
       <LeftHalfWrapper>
         <SectionHeader>
@@ -143,7 +95,7 @@ class LeftHalf extends React.Component<TProps, TState> {
           onChange={this.handleSearchInput}
           />
         <SearchResultsContainer>
-          {SearchResults}
+          {this.buildRows()}
         </SearchResultsContainer>
       </LeftHalfWrapper>
     );
