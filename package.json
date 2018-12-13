@@ -13,8 +13,7 @@
     "build": "react-scripts build",
     "test": "flow && react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "npx now && npx now alias set $(pbpaste) vimrc-builder.now.sh",
-    "now-build": "yarn build && mv build dist"
+    "deploy": "npx now && npx now alias set $(pbpaste) vimrc-builder.now.sh"
   },
   "engines": {
     "node": ">=8"
