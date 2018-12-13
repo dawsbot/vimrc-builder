@@ -45,7 +45,7 @@ Example: `syntax on` in your vimrc enables syntax hi-lighting
 
 ## Contributing
 
-Please do! If you want to add more vim commands, find those [here](https://github.com/dawsbot/vimrc-builder/blob/master/src/commands.json). If you have a feature request, submit an [issue](https://github.com/dawsbot/vimrc-builder/issues).
+Please do! If you want to add more vim commands, find those [here](https://github.com/dawsbot/vimrc-builder/blob/master/src/vim-commands.json). If you have a feature request, submit an [issue](https://github.com/dawsbot/vimrc-builder/issues).
 
 #### Color Palette
 
