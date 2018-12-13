@@ -63,14 +63,10 @@ class App extends Component<null, TState> {
   }
 
   handleRowClick = (command: string) => {
+    const newCommands = {...this.state.commands}
+    newCommands[command].active = !newCommands[command].active
     const newState: TState = {
-      commands: {
-        ...this.state.commands,
-        [command]: {
-          ...this.state.commands[command],
-          active: !this.state.commands[command].active
-        }
-      }
+      commands: newCommands
     };
     this.setState(newState);
   };

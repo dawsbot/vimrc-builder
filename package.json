@@ -1,7 +1,6 @@
 {
   "name": "vimrc-builder",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
   "dependencies": {
     "react": "^16.6.3",
     "react-copy-to-clipboard": "^5.0.1",
@@ -12,12 +11,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "flow && react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy": "npx now && npx now alias set $(pbpaste) vimrc-builder.now.sh"
   },
   "engines": {
-    "node": "10"
+    "node": ">=8"
   },
   "browserslist": [
     ">0.2%",
