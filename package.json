@@ -2,18 +2,19 @@
   "name": "vimrc-builder",
   "version": "1.0.0",
   "dependencies": {
-    "react": "^16.6.3",
+    "react": "^16.8.6",
     "react-copy-to-clipboard": "^5.0.1",
-    "react-dom": "^16.6.3",
-    "react-scripts": "^2.1.1",
-    "styled-components": "^2.3.2"
+    "react-dom": "^16.8.6",
+    "react-scripts": "^2.1.8",
+    "styled-components": "^4.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "now-build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "npx now && npx now alias set $(pbpaste) vimrc-builder.now.sh"
+    "deploy": "npx now && npx now alias"
   },
   "engines": {
     "node": ">=8"
@@ -25,9 +26,9 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "flow-bin": "^0.87.0",
-    "lint-staged": "^8.1.0",
-    "prettier": "^1.15.3"
+    "flow-bin": "^0.97.0",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.17.0"
   },
   "husky": {
     "hooks": {
@@ -40,5 +41,4 @@
       "git add"
     ]
   }
-
 }
