@@ -2,11 +2,14 @@
   "set number": {
     "description": "Show absolute line numbers on the left."
   },
+  "filetype plugin on": {
+    "description": "Auto-detect un-labeled filetypes"
+  },
   "set relativenumber": {
     "description": "Show relative line numbers on the left. These change based upon where your cursor is."
   },
   "syntax on": {
-    "description": "Turns syntax highlighting on"
+    "description": "Turn syntax highlighting on"
   },
   "set ai": {
     "description": "Sets auto-indentation"
@@ -24,31 +27,31 @@
     "description": "Highlight current cursor column"
   },
   "set tabstop=2": {
-    "description": "One tab should equal 2 spaces (default 4)"
+    "description": "Tab equal 2 spaces (default 4)"
   },
   "set shiftwidth=2": {
-    "description": "Arrow function (>>) also indents 2 spaces"
+    "description": "Arrow function (>>) creates 2 spaces"
   },
   "set expandtab": {
-    "description": "One tab should be comprised of spaces(\" \") instead of one tab (\"\\t\")"
+    "description": "Use spaces instead of a tab charater on TAB"
   },
   "set smarttab": {
     "description": "Be smart when using tabs"
   },
   "set wrap": {
-    "description": "wrap lines"
+    "description": "Wrap overflowing lines"
   },
   "set hlsearch": {
-    "description": "Highlights matches to search"
+    "description": "When searching (/), highlights matches as you go"
   },
   "set incsearch": {
-    "description": "Display search results as you type (instead of only upon ENTER)"
+    "description": "When searching (/), display results as you type (instead of only upon ENTER)"
   },
   "set ignorecase": {
-    "description": "Ignore case when searching"
+    "description": "When searching (/), ignore case entirely"
   },
   "set smartcase": {
-    "description": "Be smart about case when searching"
+    "description": "When searching (/), automatically switch to a case-sensitive search if you use any capital letters"
   },
   "set cmdheight=2": {
     "description": "Set height of the command bar to 2"
@@ -69,7 +72,7 @@
     "description": "Place a width 1 margin on the left"
   },
   "set encoding=utf8": {
-    "description": "Set utf8 as encoding & en_US as language"
+    "description": "Set text encoding as utf8"
   },
   "set numberwidth=3": {
     "description": "Sets width of the 'gutter' column used for numbering to 3 (default 4)"
