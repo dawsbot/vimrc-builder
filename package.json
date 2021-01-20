@@ -2,6 +2,7 @@
   "name": "vimrc-builder",
   "version": "1.0.0",
   "dependencies": {
+    "next": "^10.0.5",
     "react": "^16.8.6",
     "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "^16.8.6",
