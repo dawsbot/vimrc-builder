@@ -62,10 +62,10 @@
   "set showmatch": {
     "description": "Show matching brackets when text indicator is over them"
   },
-  "set noerrorbell": {
+  "set noerrorbells": {
     "description": "Silence the error bell"
   },
-  "set novisualbells": {
+  "set novisualbell": {
     "description": "Visually hide the error bell"
   },
   "set foldcolumn=1": {
