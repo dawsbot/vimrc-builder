@@ -44,13 +44,16 @@ type TState = {|
 |};
 
 class App extends Component<null, TState> {
+
   constructor() {
     super();
-    const commands: TVimCommands = Object.keys(vimCommands).reduce(
-      (acc, commandName) => {
+    const activeSet = App.parseHash(window.location.hash);
+    const commandKeys = Object.keys(vimCommands);
+    const commands: TVimCommands = commandKeys.reduce(
+      (acc, commandName, index) => {
         acc[commandName] = {
           ...vimCommands[commandName],
-          active: false
+          active: activeSet ? activeSet.has(index) : false
         };
         return acc;
       },
@@ -62,13 +65,67 @@ class App extends Component<null, TState> {
     };
   }
 
+  static parseHash(hash: string): ?Set<number> {
+    if (!hash || hash.length < 2) return null;
+    try {
+      const encoded = hash.slice(1); // remove '#'
+      // Decode base36 back to binary string
+      let binary = '';
+      // Process in chunks to handle large numbers
+      const chunkSize = 6; // each base36 chunk encodes ~31 bits
+      const bitsPerChunk = 31;
+      const totalCommands = Object.keys(vimCommands).length;
+      const numChunks = Math.ceil(totalCommands / bitsPerChunk);
+
+      const chunks = encoded.split('-');
+      if (chunks.length !== numChunks) return null;
+
+      for (let i = 0; i < chunks.length; i++) {
+        const num = parseInt(chunks[i], 36);
+        if (isNaN(num)) return null;
+        const isLast = i === chunks.length - 1;
+        const width = isLast ? totalCommands - i * bitsPerChunk : bitsPerChunk;
+        binary += num.toString(2).padStart(width, '0');
+      }
+
+      const activeIndices = new Set();
+      for (let i = 0; i < binary.length; i++) {
+        if (binary[i] === '1') activeIndices.add(i);
+      }
+      return activeIndices;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  updateHash = (commands: TVimCommands) => {
+    const commandKeys = Object.keys(vimCommands);
+    const hasAny = commandKeys.some(k => commands[k].active);
+    if (!hasAny) {
+      window.history.replaceState(null, '', window.location.pathname);
+      return;
+    }
+    // Build binary string from active states
+    const binary = commandKeys.map(k => commands[k].active ? '1' : '0').join('');
+    // Encode in chunks to avoid number overflow
+    const bitsPerChunk = 31;
+    const chunks = [];
+    for (let i = 0; i < binary.length; i += bitsPerChunk) {
+      const chunk = binary.slice(i, i + bitsPerChunk);
+      chunks.push(parseInt(chunk, 2).toString(36));
+    }
+    window.history.replaceState(null, '', '#' + chunks.join('-'));
+  };
+
   handleRowClick = (command: string) => {
     const newCommands = {...this.state.commands}
     newCommands[command].active = !newCommands[command].active
     const newState: TState = {
       commands: newCommands
     };
-    this.setState(newState);
+    this.setState(newState, () => {
+      this.updateHash(this.state.commands);
+    });
   };
 
   render() {

@@ -77,15 +77,32 @@ type TProps = {|
   +vimCommands: TVimCommands
 |};
 
+const ShareButton = styled.button`
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+  transition: background-color 300ms ease;
+
+  :hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+`;
+
 type TState = {|
-  +copyClicked: boolean
+  +copyClicked: boolean,
+  +shareClicked: boolean
 |};
 
 class RightHalf extends React.Component<TProps, TState> {
   constructor() {
     super();
     this.state = {
-      copyClicked: false
+      copyClicked: false,
+      shareClicked: false
     };
   }
 
@@ -96,7 +113,14 @@ class RightHalf extends React.Component<TProps, TState> {
   };
   componentWillReceiveProps = () => {
     this.setState({
-      copyClicked: false
+      copyClicked: false,
+      shareClicked: false
+    });
+  };
+
+  handleShareClick = () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      this.setState({ shareClicked: true });
     });
   };
 
@@ -170,6 +194,11 @@ class RightHalf extends React.Component<TProps, TState> {
             )}
           </IconWrapperButton>
         </CopyToClipboard>
+        {window.location.hash && (
+          <ShareButton onClick={this.handleShareClick}>
+            {this.state.shareClicked ? 'Link copied!' : 'Share this config'}
+          </ShareButton>
+        )}
       </RightHalfWrapper>
     );
   }
