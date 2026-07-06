@@ -1,11 +1,8 @@
-// @flow
 import React from 'react';
 import styled from 'styled-components';
 
 import SearchResult from './SearchResult';
 import SectionHeader from './SectionHeader';
-
-import type { TVimCommands } from '../App';
 
 const LeftHalfWrapper = styled.div`
   min-width: 40%;
@@ -40,23 +37,13 @@ const SearchResultsContainer = styled.div`
   min-height: 40px;
 `;
 
-type TProps = {|
-  // onAppendVimrcContent: (TNewText) => void,
-  +vimCommands: TVimCommands,
-  +handleRowClick: (commandName: string) => void
-|};
-
-type TState = {|
-  +searchText: string
-|};
-
-class LeftHalf extends React.Component<TProps, TState> {
+class LeftHalf extends React.Component {
   state = {
     searchText: ''
   };
 
   // filter out and stop showing search results that do not match
-  handleSearchInput = (e: SyntheticInputEvent<HTMLInputElement>) => {
+  handleSearchInput = (e) => {
     const searchText = e.target.value;
     this.setState({
       searchText: searchText.toLowerCase()
@@ -65,7 +52,7 @@ class LeftHalf extends React.Component<TProps, TState> {
 
   buildRows = () => {
     const { vimCommands } = this.props;
-    return Object.keys(vimCommands).reduce((acc, commandName: string) => {
+    return Object.keys(vimCommands).reduce((acc, commandName) => {
       if (commandName.toLowerCase().includes(this.state.searchText)) {
         acc.push(
           <SearchResult

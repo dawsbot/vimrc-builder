@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import styled from 'styled-components';
 
@@ -7,8 +6,6 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import SectionHeader from './SectionHeader';
 import clipboadIconPath from '../ionicons/clipboard.svg';
 import arrowRightIconPath from '../ionicons/arrow-right-a.svg';
-
-import type { TVimCommands } from '../App';
 
 const RightHalfWrapper = styled.div`
   margin-right: 30px;
@@ -73,10 +70,6 @@ const Comment = styled.span`
   color: grey;
 `;
 
-type TProps = {|
-  +vimCommands: TVimCommands
-|};
-
 const ShareButton = styled.button`
   background-color: transparent;
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -92,12 +85,7 @@ const ShareButton = styled.button`
   }
 `;
 
-type TState = {|
-  +copyClicked: boolean,
-  +shareClicked: boolean
-|};
-
-class RightHalf extends React.Component<TProps, TState> {
+class RightHalf extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -124,7 +112,7 @@ class RightHalf extends React.Component<TProps, TState> {
     });
   };
 
-  buildViewableTextContent = (): Array<any> => {
+  buildViewableTextContent = () => {
     const { vimCommands } = this.props;
     let viewableText = [];
     Object.keys(vimCommands).map(command => {
@@ -140,7 +128,7 @@ class RightHalf extends React.Component<TProps, TState> {
   };
 
   // what is actually placed on the clipboard
-  buildCopyableTextContent = (): string => {
+  buildCopyableTextContent = () => {
     const { vimCommands } = this.props;
     let copyableText =
       '" >_ Customizations for the vim editor. Read more at https://github.com/dawsbot/vimrc-builder\n';
