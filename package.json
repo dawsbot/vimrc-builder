@@ -16,7 +16,7 @@
     "deploy": "npx vercel"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   },
   "browserslist": [
     ">0.2%",
