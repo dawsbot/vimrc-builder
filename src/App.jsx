@@ -1,4 +1,3 @@
-// @flow
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
@@ -32,24 +31,13 @@ const AppWrapper = styled.div`
   }
 `;
 
-export type TVimCommands = {
-  [command: string]: {|
-    +description: string,
-    +active: boolean
-  |}
-};
-
-type TState = {|
-  +commands: TVimCommands
-|};
-
-class App extends Component<null, TState> {
+class App extends Component {
 
   constructor() {
     super();
     const activeSet = App.parseHash(window.location.hash);
     const commandKeys = Object.keys(vimCommands);
-    const commands: TVimCommands = commandKeys.reduce(
+    const commands = commandKeys.reduce(
       (acc, commandName, index) => {
         acc[commandName] = {
           ...vimCommands[commandName],
@@ -65,7 +53,7 @@ class App extends Component<null, TState> {
     };
   }
 
-  static parseHash(hash: string): ?Set<number> {
+  static parseHash(hash) {
     if (!hash || hash.length < 2) return null;
     try {
       const encoded = hash.slice(1); // remove '#'
@@ -98,7 +86,7 @@ class App extends Component<null, TState> {
     }
   }
 
-  updateHash = (commands: TVimCommands) => {
+  updateHash = (commands) => {
     const commandKeys = Object.keys(vimCommands);
     const hasAny = commandKeys.some(k => commands[k].active);
     if (!hasAny) {
@@ -117,10 +105,10 @@ class App extends Component<null, TState> {
     window.history.replaceState(null, '', '#' + chunks.join('-'));
   };
 
-  handleRowClick = (command: string) => {
+  handleRowClick = (command) => {
     const newCommands = {...this.state.commands}
     newCommands[command].active = !newCommands[command].active
-    const newState: TState = {
+    const newState = {
       commands: newCommands
     };
     this.setState(newState, () => {

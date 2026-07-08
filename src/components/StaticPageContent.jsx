@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import styled from 'styled-components';
 
@@ -42,10 +41,8 @@ const StaticPageContent = () => (
       maintained by <a href="https://github.com/dawsbot">dawsbot</a> and now
       boasts technologies like{' '}
       <a href="https://www.styled-components.com/">Styled Components</a>,{' '}
-      <a href="https://github.com/facebookincubator/create-react-app">
-        Create React App
-      </a>
-      , and <a href="https://zeit.co/now">Now js</a>!
+      <a href="https://vitejs.dev/">Vite</a>, and{' '}
+      <a href="https://vercel.com/">Vercel</a>!
     </p>
   </Wrapper>
 );

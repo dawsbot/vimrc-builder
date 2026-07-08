@@ -2,23 +2,21 @@
   "name": "vimrc-builder",
   "version": "1.0.0",
   "dependencies": {
-    "next": "^12.1.0",
     "react": "^17.0.1",
     "react-copy-to-clipboard": "^5.0.3",
     "react-dom": "^17.0.1",
-    "react-scripts": "^5.0.1",
     "styled-components": "^5.2.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "now-build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "deploy": "npx now && npx now alias"
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "deploy": "npx vercel"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=20"
   },
   "browserslist": [
     ">0.2%",
@@ -27,14 +25,16 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "flow-bin": "^0.142.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "jsdom": "^25.0.1",
     "lint-staged": "^10.5.3",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "vite": "^6.0.7",
+    "vitest": "^2.1.8"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "npm run flow"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
